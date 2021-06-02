@@ -1,0 +1,53 @@
+import React from 'react'
+import styled from 'styled-components'
+import { GitHubIcon, TelegramIcon, TwitterIcon, MediumIcon } from '../../svg'
+
+const StyledContainer = styled.div`
+  position: absolute;
+  bottom: 41px;
+  width: 100%;
+`
+
+const StyledLinks = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+  flex-flow: wrap;
+`
+
+const StyledLink = styled.a`
+  cursor: pointer;
+  svg * {
+    fill: #919191;
+    transition: fill 200ms ease-in-out;
+  }
+  :hover {
+    svg * {
+      fill: #009ce1;
+    }
+  }
+  margin-bottom: 20px;
+`
+
+const LinksContainer = () => {
+  return (
+    <StyledContainer>
+      <StyledLinks>
+        <StyledLink href="https://github.com/gravis-finance" target={'_blank'}>
+          <GitHubIcon />
+        </StyledLink>
+        <StyledLink href="https://t.me/gravis_finance" target={'_blank'}>
+          <TelegramIcon />
+        </StyledLink>
+        <StyledLink href="https://twitter.com/gravis_finance" target={'_blank'}>
+          <TwitterIcon />
+        </StyledLink>
+        <StyledLink href="https://gravis-finance.medium.com" target={'_blank'}>
+          <MediumIcon />
+        </StyledLink>
+      </StyledLinks>
+    </StyledContainer>
+  )
+}
+
+export { LinksContainer }
