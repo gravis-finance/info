@@ -15,6 +15,7 @@ import FormattedName from '../FormattedName'
 import QuestionHelper from '../QuestionHelper'
 import { PagePicker } from '../Page'
 import SortDirection from '../SortDirection'
+import { useTranslation } from 'react-multi-lang'
 
 dayjs.extend(utc)
 
@@ -142,6 +143,8 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
   const [sortDirection, setSortDirection] = useState(true)
   const [sortedColumn, setSortedColumn] = useState(SORT_FIELD.LIQ)
 
+  const t = useTranslation()
+
   useEffect(() => {
     setMaxPage(1) // edit this to do modular
     setPage(1)
@@ -253,7 +256,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
               setSortDirection(sortedColumn !== SORT_FIELD.NAME ? true : !sortDirection)
             }}
           >
-            Name <SortDirection found={sortedColumn === SORT_FIELD.NAME} sortDirection={sortDirection} />
+            {t('name')} <SortDirection found={sortedColumn === SORT_FIELD.NAME} sortDirection={sortDirection} />
           </ClickableText>
         </Flex>
         <Flex alignItems="center" justifyContent="left">
@@ -264,7 +267,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
               setSortDirection(sortedColumn !== SORT_FIELD.LIQ ? true : !sortDirection)
             }}
           >
-            Liquidity <SortDirection found={sortedColumn === SORT_FIELD.LIQ} sortDirection={sortDirection} />
+            {t('liquidity')} <SortDirection found={sortedColumn === SORT_FIELD.LIQ} sortDirection={sortDirection} />
           </ClickableText>
         </Flex>
         <Flex alignItems="center" justifyContent="left">
@@ -275,7 +278,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
               setSortDirection(sortedColumn !== SORT_FIELD.VOL ? true : !sortDirection)
             }}
           >
-            Volume (24hrs) <SortDirection found={sortedColumn === SORT_FIELD.VOL} sortDirection={sortDirection} />
+            {t('volume24hrs')} <SortDirection found={sortedColumn === SORT_FIELD.VOL} sortDirection={sortDirection} />
           </ClickableText>
         </Flex>
         {!below1080 && (
@@ -287,7 +290,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
                 setSortDirection(sortedColumn !== SORT_FIELD.VOL_7DAYS ? true : !sortDirection)
               }}
             >
-              Volume (7d) <SortDirection found={sortedColumn === SORT_FIELD.VOL_7DAYS} sortDirection={sortDirection} />
+              {t('volume7D')} <SortDirection found={sortedColumn === SORT_FIELD.VOL_7DAYS} sortDirection={sortDirection} />
             </ClickableText>
           </Flex>
         )}
@@ -300,7 +303,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
                 setSortDirection(sortedColumn !== SORT_FIELD.FEES ? true : !sortDirection)
               }}
             >
-              Fees (24hr) <SortDirection found={sortedColumn === SORT_FIELD.FEES} sortDirection={sortDirection} />
+              {t('fees24hrs')} <SortDirection found={sortedColumn === SORT_FIELD.FEES} sortDirection={sortDirection} />
             </ClickableText>
           </Flex>
         )}
@@ -313,10 +316,10 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
                 setSortDirection(sortedColumn !== SORT_FIELD.APY ? true : !sortDirection)
               }}
             >
-              1y Fees / Liquidity{' '}
+              {t('1yFeesLiquidity')}{' '}
               <SortDirection found={sortedColumn === SORT_FIELD.APY} sortDirection={sortDirection} />
             </ClickableText>
-            <QuestionHelper text={'Based on 24hr volume annualized'} />
+            <QuestionHelper text={t('basedOnVolume')} />
           </Flex>
         )}
       </DashGrid>

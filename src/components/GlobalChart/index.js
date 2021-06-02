@@ -10,6 +10,7 @@ import { RowFixed } from '../Row'
 import { getTimeframe } from '../../utils'
 import { TYPE } from '../../Theme'
 import styled from 'styled-components'
+import { useTranslation } from 'react-multi-lang'
 
 const ResponsiveContainer = lazy(() => import('recharts/es6/component/ResponsiveContainer'))
 
@@ -24,8 +25,8 @@ const VOLUME_WINDOW = {
 }
 
 const StyledOptionButton = styled.div`
-  width: 32px;
-  height: 32px;
+  width: 42px;
+  height: 42px;
   display: flex;
   border-radius: 43px;
   border: 1px solid ${({ active }) => (active ? '#009CE1' : 'rgba(255, 255, 255, 0.5)')};
@@ -92,6 +93,7 @@ const GlobalChart = ({ display }) => {
 
   // update the width on a window resize
   const ref = useRef()
+  const t = useTranslation()
   const isClient = typeof window === 'object'
   const [width, setWidth] = useState(ref?.current?.container?.clientWidth)
   useEffect(() => {
@@ -116,7 +118,7 @@ const GlobalChart = ({ display }) => {
             data={dailyData}
             base={totalLiquidityUSD}
             baseChange={liquidityChangeUSD}
-            title="Liquidity"
+            title={t('liquidity')}
             field="totalLiquidityUSD"
             width={width}
             type={CHART_TYPES.AREA}
@@ -129,7 +131,7 @@ const GlobalChart = ({ display }) => {
             data={chartDataFiltered}
             base={volumeWindow === VOLUME_WINDOW.WEEKLY ? oneWeekVolume : oneDayVolumeUSD}
             baseChange={volumeWindow === VOLUME_WINDOW.WEEKLY ? weeklyVolumeChange : volumeChangeUSD}
-            title={volumeWindow === VOLUME_WINDOW.WEEKLY ? 'Volume (7d)' : 'Volume'}
+            title={volumeWindow === VOLUME_WINDOW.WEEKLY ? t('volume7D') : t('volume')}
             field={volumeWindow === VOLUME_WINDOW.WEEKLY ? 'weeklyVolumeUSD' : 'dailyVolumeUSD'}
             width={width}
             type={CHART_TYPES.BAR}
@@ -150,14 +152,14 @@ const GlobalChart = ({ display }) => {
             active={volumeWindow === VOLUME_WINDOW.DAYS}
             onClick={() => setVolumeWindow(VOLUME_WINDOW.DAYS)}
           >
-            <TYPE.body>D</TYPE.body>
+            <TYPE.body>{t('time.day')}</TYPE.body>
           </StyledOptionButton>
           <StyledOptionButton
             style={{ marginLeft: '4px' }}
             active={volumeWindow === VOLUME_WINDOW.WEEKLY}
             onClick={() => setVolumeWindow(VOLUME_WINDOW.WEEKLY)}
           >
-            <TYPE.body>W</TYPE.body>
+            <TYPE.body>{t('time.week')}</TYPE.body>
           </StyledOptionButton>
         </RowFixed>
       )}

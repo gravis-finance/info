@@ -13,6 +13,7 @@ import { EmptyCard } from '..'
 import DropdownSelect from '../DropdownSelect'
 import CandleStickChart from '../CandleChart'
 import LocalLoader from '../LocalLoader'
+import { useTranslation } from 'react-multi-lang'
 // import { useDarkModeManager } from '../../contexts/LocalStorage'
 
 const ChartWrapper = styled.div`
@@ -64,6 +65,7 @@ const PairChart = ({ address, color, base0, base1 }) => {
     return () => window.removeEventListener('resize', handleResize)
   }, [height, isClient, width]) // Empty array ensures that effect is only run on mount and unmount
 
+  const t = useTranslation()
   // get data for pair, and rates
   const pairData = usePairData(address)
   let chartData = usePairChartData(address)
@@ -134,7 +136,7 @@ const PairChart = ({ address, color, base0, base1 }) => {
                 setChartFilter(CHART_VIEW.LIQUIDITY)
               }}
             >
-              Liquidity
+              {t('liquidity')}
             </SelectorOptionButton>
             <SelectorOptionButton
               active={chartFilter === CHART_VIEW.VOLUME}
@@ -143,7 +145,7 @@ const PairChart = ({ address, color, base0, base1 }) => {
                 setChartFilter(CHART_VIEW.VOLUME)
               }}
             >
-              Volume
+              {t('volume')}
             </SelectorOptionButton>
             <SelectorOptionButton
               active={chartFilter === CHART_VIEW.RATE0}
@@ -170,20 +172,20 @@ const PairChart = ({ address, color, base0, base1 }) => {
               onClick={() => setTimeWindow(timeframeOptions.WEEK)}
               style={{ marginRight: '4px' }}
             >
-              1W
+              {t('time.1week')}
             </ChartOptionButton>
             <ChartOptionButton
               active={timeWindow === timeframeOptions.MONTH}
               onClick={() => setTimeWindow(timeframeOptions.MONTH)}
               style={{ marginRight: '4px' }}
             >
-              1M
+              {t('time.1month')}
             </ChartOptionButton>
             <ChartOptionButton
               active={timeWindow === timeframeOptions.ALL_TIME}
               onClick={() => setTimeWindow(timeframeOptions.ALL_TIME)}
             >
-              All
+              {t('all')}
             </ChartOptionButton>
           </AutoRow>
         </OptionsRow>

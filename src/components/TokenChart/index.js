@@ -15,6 +15,7 @@ import LocalLoader from '../LocalLoader'
 import { AutoColumn } from '../Column'
 import { Activity } from 'react-feather'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
+import { useTranslation } from 'react-multi-lang'
 
 const ChartWrapper = styled.div`
   height: 100%;
@@ -117,6 +118,8 @@ const TokenChart = ({ address, color, base }) => {
   const ref = useRef()
   const isClient = typeof window === 'object'
   const [width, setWidth] = useState(ref?.current?.container?.clientWidth)
+  const t = useTranslation()
+
   useEffect(() => {
     if (!isClient) {
       return false
@@ -153,14 +156,14 @@ const TokenChart = ({ address, color, base }) => {
                 onClick={() => setChartFilter(CHART_VIEW.LIQUIDITY)}
                 style={{ marginRight: '6px' }}
               >
-                Liquidity
+                {t('liquidity')}
               </SelectorOptionButton>
               <SelectorOptionButton
                 active={chartFilter === CHART_VIEW.VOLUME}
                 onClick={() => setChartFilter(CHART_VIEW.VOLUME)}
                 style={{ marginRight: '6px' }}
               >
-                Volume
+                {t('volume')}
               </SelectorOptionButton>
               <SelectorOptionButton
                 active={chartFilter === CHART_VIEW.PRICE}
@@ -168,7 +171,7 @@ const TokenChart = ({ address, color, base }) => {
                   setChartFilter(CHART_VIEW.PRICE)
                 }}
               >
-                Price
+                {t('price')}
               </SelectorOptionButton>
             </RowFixed>
             {chartFilter === CHART_VIEW.PRICE && (
@@ -181,14 +184,14 @@ const TokenChart = ({ address, color, base }) => {
                   }}
                   style={{ marginRight: '8px', padding: '8px 12px' }}
                 >
-                  D
+                  {t('time.day')}
                 </ChartOptionButton>
                 <ChartOptionButton
                   active={frequency === DATA_FREQUENCY.HOUR}
                   onClick={() => setFrequency(DATA_FREQUENCY.HOUR)}
                   style={{ marginRight: '8px', padding: '8px 12px' }}
                 >
-                  H
+                  {t('time.hour')}
                 </ChartOptionButton>
                 <ChartOptionButton
                   active={frequency === DATA_FREQUENCY.LINE}
@@ -206,20 +209,20 @@ const TokenChart = ({ address, color, base }) => {
               onClick={() => setTimeWindow(timeframeOptions.WEEK)}
               style={{ marginRight: '8px' }}
             >
-              1W
+              {t('time.1week')}
             </ChartOptionButton>
             <ChartOptionButton
               active={timeWindow === timeframeOptions.MONTH}
               onClick={() => setTimeWindow(timeframeOptions.MONTH)}
               style={{ marginRight: '8px' }}
             >
-              1M
+              {t('time.1month')}
             </ChartOptionButton>
             <ChartOptionButton
               active={timeWindow === timeframeOptions.ALL_TIME}
               onClick={() => setTimeWindow(timeframeOptions.ALL_TIME)}
             >
-              All
+              {t('all')}
             </ChartOptionButton>
           </AutoRow>
         </RowBetween>

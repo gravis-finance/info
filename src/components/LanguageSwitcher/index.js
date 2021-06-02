@@ -67,7 +67,7 @@ const StyledDropDown = styled.div`
 const StyledSelectedOption = styled.p`
   position: absolute;
   padding-left: 47px;
-  margin-top: 17px;
+  margin-top: 15px;
   color: ${({ showOptions }) => (showOptions ? '#fff' : '#929292')};
   font-size: 14px;
 
@@ -90,6 +90,7 @@ const StyledOptionsContainer = styled.div`
   border: 1px solid #2e2e2e;
   box-sizing: border-box;
   border-radius: 0 0 6px 6px;
+  z-index: 50;
 
   ${({ toggleMobile }) =>
   toggleMobile

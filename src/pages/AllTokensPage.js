@@ -11,6 +11,7 @@ import { useMedia } from 'react-use'
 import styled from 'styled-components'
 import { SavedInfo } from '../components/SavedInfo'
 import { Flex } from 'rebass'
+import { useTranslation } from 'react-multi-lang'
 
 const NetworkSwitcher = lazy(() => import('../components/NetworkSwitcher'))
 
@@ -30,11 +31,13 @@ function AllTokensPage() {
 
   const below600 = useMedia('(max-width: 800px)')
 
+  const t = useTranslation()
+
   return (
     <StyledPageWrapper>
       <FullWrapper>
         <RowBetween>
-          <TYPE.largeHeader>Top Tokens</TYPE.largeHeader>
+          <TYPE.largeHeader>{t('topTokens')}</TYPE.largeHeader>
           {!below600 && (
             <Flex alignItems="center">
               <Search small={true} big disableMargin />

@@ -19,6 +19,7 @@ import { useMedia } from 'react-use'
 import { setDefaultLanguage, setLanguage, setTranslations } from 'react-multi-lang'
 import ru from './locales/ru.json'
 import en from './locales/en.json'
+import jp from './locales/jp.json'
 
 const GlobalPage = lazy(() => import('./pages/GlobalPage'))
 const TokenPage = lazy(() => import('./pages/TokenPage'))
@@ -144,7 +145,8 @@ const StyledSearchIcon = styled(SearchIcon)`
     stroke: #929292;
   }
 `
-setTranslations({ru, en})
+setTranslations({ru, en, jp})
+setDefaultLanguage('en')
 
 const LayoutWrapper = ({ children, savedOpen }) => {
   const isMobile = useMedia('(max-width: 1024px)')
@@ -193,8 +195,6 @@ function App() {
     else
       setLanguage('en')
   }, [])
-
-  setDefaultLanguage('en')
 
   return (
     <ApolloProvider client={client}>

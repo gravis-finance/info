@@ -11,6 +11,7 @@ import { useMedia } from 'react-use'
 import styled from 'styled-components'
 import { Flex } from 'rebass'
 import { SavedInfo } from '../components/SavedInfo'
+import { useTranslation } from 'react-multi-lang'
 
 const NetworkSwitcher = lazy(() => import('../components/NetworkSwitcher'))
 // eslint-disable-next-line no-unused-expressions
@@ -22,6 +23,7 @@ const StyledPageWrapper = styled(PageWrapper)`
 
 function AllPairsPage() {
   const allPairs = useAllPairData()
+  const t = useTranslation()
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -33,7 +35,7 @@ function AllPairsPage() {
     <StyledPageWrapper>
       <FullWrapper>
         <RowBetween>
-          <TYPE.largeHeader>Top Pairs</TYPE.largeHeader>
+          <TYPE.largeHeader>{t('topPairs')}</TYPE.largeHeader>
           {!below800 && (
             <Flex alignItems="center">
               <Search small={true} big disableMargin />

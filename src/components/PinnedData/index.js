@@ -11,6 +11,7 @@ import AccountSearch from '../AccountSearch'
 import { Bookmark, ChevronRight, X } from 'react-feather'
 import { ButtonFaded } from '../ButtonStyled'
 import FormattedName from '../FormattedName'
+import { useTranslation } from 'react-multi-lang'
 
 const RightColumn = styled.div`
   position: fixed;
@@ -51,6 +52,8 @@ function PinnedData({ history, open, setSavedOpen }) {
   const [savedPairs, , removePair] = useSavedPairs()
   const [savedTokens, , removeToken] = useSavedTokens()
 
+  const t = useTranslation()
+
   return !open ? (
     <RightColumn open={open} onClick={() => setSavedOpen(true)}>
       <SavedButton open={open}>
@@ -66,7 +69,7 @@ function PinnedData({ history, open, setSavedOpen }) {
           <StyledIcon>
             <Bookmark size={16} />
           </StyledIcon>
-          <TYPE.main ml={'4px'}>Saved</TYPE.main>
+          <TYPE.main ml={'4px'}>{t('saved')}</TYPE.main>
         </RowFixed>
         <StyledIcon>
           <ChevronRight />
@@ -75,7 +78,7 @@ function PinnedData({ history, open, setSavedOpen }) {
       <AccountSearch small={true} />
       <AutoColumn gap="40px" style={{ marginTop: '2rem' }}>
         <AutoColumn gap={'12px'}>
-          <TYPE.main>Pinned Pairs</TYPE.main>
+          <TYPE.main>{t('pinnedPairs')}</TYPE.main>
           {Object.keys(savedPairs).filter((key) => {
             return !!savedPairs[key]
           }).length > 0 ? (
@@ -107,11 +110,11 @@ function PinnedData({ history, open, setSavedOpen }) {
                 )
               })
           ) : (
-            <TYPE.light>Pinned pairs will appear here.</TYPE.light>
+            <TYPE.light>{t('pinnedPairsWillAppear')}</TYPE.light>
           )}
         </AutoColumn>
         <ScrollableDiv gap={'12px'}>
-          <TYPE.main>Pinned Tokens</TYPE.main>
+          <TYPE.main>{t('pinnedTokens')}</TYPE.main>
           {Object.keys(savedTokens).filter((key) => {
             return !!savedTokens[key]
           }).length > 0 ? (
@@ -140,7 +143,7 @@ function PinnedData({ history, open, setSavedOpen }) {
                 )
               })
           ) : (
-            <TYPE.light>Pinned tokens will appear here.</TYPE.light>
+            <TYPE.light>{t('pinnedTokensWillAppear')}</TYPE.light>
           )}
         </ScrollableDiv>
       </AutoColumn>
