@@ -37,6 +37,7 @@ import { BookmarkIcon, BorderedPlusIcon, ChevronMenuIcon, PlusIcon } from '../sv
 import { Flex } from 'rebass'
 import { SavedInfo } from '../components/SavedInfo'
 import { getCurrentNetworkLinks } from '../utils/data'
+import { useTranslation } from 'react-multi-lang'
 
 const PairChart = lazy(() => import('../components/PairChart'))
 // eslint-disable-next-line no-unused-expressions
@@ -206,6 +207,8 @@ function PairPage({ pairAddress, history }) {
 
   const volumeChange = formattedPercent(!usingUtVolume ? volumeChangeUSD : volumeChangeUntracked)
 
+  const t = useTranslation()
+
   // get fees	  // get fees
   const fees =
     oneDayVolumeUSD || oneDayVolumeUSD === 0
@@ -325,7 +328,7 @@ function PairPage({ pairAddress, history }) {
                 fontSize: '12px',
               }}
             >
-              {'Pairs '}
+              {t('pairs')}
             </BasicLink>
             <ChevronMenuIcon style={{ transform: 'rotate(180deg)', padding: '0 4px' }} />
             <StyledPair>
@@ -369,7 +372,7 @@ function PairPage({ pairAddress, history }) {
                           <HoverSpan onClick={() => history.push(`/token/${token1?.id}` + window.location.search)}>
                             {token1.symbol}
                           </HoverSpan>{' '}
-                          <span>Pair</span>
+                          <span>{t('pair')}</span>
                         </StyledPairContainer>
                       ) : (
                         ''
@@ -412,7 +415,7 @@ function PairPage({ pairAddress, history }) {
                       href={getPoolLink(token0?.id, token1?.id)}
                       style={{ display: 'flex', alignItems: 'center' }}
                     >
-                      <BorderedPlusIcon style={{ marginRight: '8px' }} /> <span>Add Liquidity</span>
+                      <BorderedPlusIcon style={{ marginRight: '8px' }} /> <span>{t('addLiquidity')}</span>
                     </Link>
                   </StyledButtonLight>
                   <Link external href={getSwapLink(token0?.id, token1?.id)}>
@@ -422,7 +425,7 @@ function PairPage({ pairAddress, history }) {
                       color={backgroundColor}
                       style={{ height: '48px' }}
                     >
-                      Trade
+                      {t('trade')}
                     </ButtonDark>
                   </Link>
                 </RowFixed>
@@ -469,7 +472,7 @@ function PairPage({ pairAddress, history }) {
               <PanelWrapper style={{ marginTop: '5px' }}>
                 <StyledCard>
                   <RowBetween>
-                    <TYPE.defHeader>Total Liquidity {!usingTracked ? '(Untracked)' : ''}</TYPE.defHeader>
+                    <TYPE.defHeader>{t('totalLiquidity')} {!usingTracked ? '(Untracked)' : ''}</TYPE.defHeader>
                     <div />
                   </RowBetween>
                   {/*<RowBetween align="flex-end">*/}
@@ -479,7 +482,7 @@ function PairPage({ pairAddress, history }) {
                 </StyledCard>
                 <StyledCard>
                   <RowBetween>
-                    <TYPE.defHeader>Volume (24 hrs) {usingUtVolume && '(Untracked)'}</TYPE.defHeader>
+                    <TYPE.defHeader>{t('volume24hrs')} {usingUtVolume && '(Untracked)'}</TYPE.defHeader>
                     <div />
                   </RowBetween>
                   {/*<RowBetween align="flex-end">*/}
@@ -489,7 +492,7 @@ function PairPage({ pairAddress, history }) {
                 </StyledCard>
                 <StyledCard>
                   <RowBetween>
-                    <TYPE.defHeader>Fees (24 hrs)</TYPE.defHeader>
+                    <TYPE.defHeader>{t('fees24h')}</TYPE.defHeader>
                     <div />
                   </RowBetween>
                   {/*<RowBetween align="flex-end">*/}
@@ -500,7 +503,7 @@ function PairPage({ pairAddress, history }) {
 
                 <StyledCard style={{ height: '118px' }}>
                   <RowBetween>
-                    <TYPE.defHeader>Pooled Tokens</TYPE.defHeader>
+                    <TYPE.defHeader>{t('pooledTokens')}</TYPE.defHeader>
                     <div />
                   </RowBetween>
                   <div>
@@ -543,7 +546,7 @@ function PairPage({ pairAddress, history }) {
                 </Panel>
               </PanelWrapper>
               <TYPE.main fontSize={24} color={'#FFFFFF'} style={{ marginTop: '3rem' }}>
-                Transactions
+                {t('transactions')}
               </TYPE.main>{' '}
               <Panel
                 style={{
@@ -555,7 +558,7 @@ function PairPage({ pairAddress, history }) {
               </Panel>
               <RowBetween style={{ marginTop: '40px' }}>
                 <TYPE.main fontSize={24} color={'#FFFFFF'}>
-                  Pair Information
+                  {t('pairInformation')}
                 </TYPE.main>{' '}
               </RowBetween>
               <Panel
@@ -569,10 +572,10 @@ function PairPage({ pairAddress, history }) {
                 <TokenDetailsLayout>
                   <StyledPairInformationBlock isHeader>
                     <TYPE.def fontSize={12} style={{ textTransform: 'uppercase' }} fontWeight={700}>
-                      Pair Name
+                      {t('pairName')}
                     </TYPE.def>
                     <TYPE.def fontSize={12} style={{ textTransform: 'uppercase' }} fontWeight={700}>
-                      Pair Address
+                      {t('pairAddress')}
                     </TYPE.def>
                     <RowFixed>
                       <FormattedName

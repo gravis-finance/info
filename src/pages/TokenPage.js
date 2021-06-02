@@ -264,7 +264,7 @@ function TokenPage({ address, history }) {
                   fontSize: '12px',
                 }}
               >
-                {'Tokens '}
+                {t('tokens')}
               </BasicLink>
               <ChevronMenuIcon style={{ transform: 'rotate(180deg)', padding: '0 4px' }} />
               {'  '}
@@ -370,7 +370,7 @@ function TokenPage({ address, history }) {
                 )}
                 <StyledCard>
                   <RowBetween>
-                    <TYPE.defHeader>Total Liquidity</TYPE.defHeader>
+                    <TYPE.defHeader>{t('totalLiquidity')}</TYPE.defHeader>
                     <div />
                   </RowBetween>
 
@@ -417,9 +417,9 @@ function TokenPage({ address, history }) {
 
             <RowBetween style={{ marginTop: '41px' }}>
               <TYPE.main fontSize={'24px'} color="#FFFFFF">
-                Top Pairs
+                {t('topPairs')}
               </TYPE.main>
-              <ButtonLink to={'/pairs' + window.location.search}>See All</ButtonLink>
+              <ButtonLink to={'/pairs' + window.location.search}>{t('seeAll')}</ButtonLink>
             </RowBetween>
             <Panel
               rounded
@@ -436,7 +436,7 @@ function TokenPage({ address, history }) {
             </Panel>
             <RowBetween mt={40} mb={23}>
               <TYPE.main fontSize={'24px'} color="#FFFFFF">
-                Transactions
+                {t('transactions')}
               </TYPE.main>{' '}
               <div />
             </RowBetween>
@@ -446,7 +446,7 @@ function TokenPage({ address, history }) {
             <>
               <RowBetween style={{ marginTop: '40px' }}>
                 <TYPE.main fontSize={'24px'} color="#FFFFFF">
-                  Token Information
+                  {t('tokenInformation')}
                 </TYPE.main>{' '}
               </RowBetween>
               <Panel
@@ -459,16 +459,16 @@ function TokenPage({ address, history }) {
                 <TokenDetailsLayout>
                   <StyledPairInformationBlock isHeader>
                     <TYPE.def fontSize={12} style={{ textTransform: 'uppercase' }} fontWeight={700}>
-                      Symbol
+                      {t('symbol')}
                     </TYPE.def>
                     <TYPE.def fontSize={12} style={{ textTransform: 'uppercase' }} fontWeight={700}>
-                      Name
+                      {t('name')}
                     </TYPE.def>
                     <TYPE.def fontSize={12} style={{ textTransform: 'uppercase' }} fontWeight={700}>
-                      Address
+                      {t('address')}
                     </TYPE.def>
                     <TYPE.def fontSize={12} style={{ opacity: 0 }} fontWeight={700}>
-                      Address
+                      {t('address')}
                     </TYPE.def>
                   </StyledPairInformationBlock>
                   <StyledPairInformationBlock style={{ paddingLeft: '16px', marginTop: '16px', alignItems: 'center' }}>

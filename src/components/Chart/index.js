@@ -3,6 +3,7 @@ import { Area, XAxis, YAxis, ResponsiveContainer, Bar, BarChart, CartesianGrid, 
 import styled from 'styled-components'
 import { useMedia } from 'react-use'
 import { toK, toNiceDate, toNiceDateYear } from '../../utils'
+import { useTranslation } from 'react-multi-lang'
 
 const ChartWrapper = styled.div`
   padding-top: 1em;
@@ -18,6 +19,8 @@ const Chart = ({ data, chartOption, currencyUnit, symbol }) => {
     setChartData([])
     setChartData(data)
   }, [data, chartOption, currencyUnit])
+
+  const t = useTranslation()
 
   const isMobile = useMedia('(max-width: 40em)')
   if (chartOption === 'price' && chartData && data) {
@@ -153,7 +156,7 @@ const Chart = ({ data, chartOption, currencyUnit, symbol }) => {
               strokeWidth={2}
               dot={false}
               type="monotone"
-              name={'Total Liquidity' + (currencyUnit === 'USD' ? ' (USD)' : ' (ETH)')}
+              name={`${t('totalLiquidity')}` + (currencyUnit === 'USD' ? ' (USD)' : ' (ETH)')}
               dataKey={currencyUnit === 'USD' ? 'usdLiquidity' : 'ethLiquidity'}
               yAxisId={0}
               fill="var(--c-token)"

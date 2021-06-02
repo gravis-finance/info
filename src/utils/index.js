@@ -296,7 +296,7 @@ export const urls = {
   showBlock: (block) => getCurrentNetworkLinks().SCAN_LINK_BLOCK + `${block}/`,
 }
 
-export const formatTime = (unix) => {
+export const formatTime = (unix, t) => {
   const now = dayjs()
   const timestamp = dayjs.unix(unix)
 
@@ -306,13 +306,13 @@ export const formatTime = (unix) => {
   const inDays = now.diff(timestamp, 'day')
 
   if (inHours >= 24) {
-    return `${inDays} ${inDays === 1 ? 'day' : 'days'} ago`
+    return `${inDays} ${inDays === 1 ? t('time.dayLabel') : t('time.daysLabel')} ${t('time.ago')}`
   } else if (inMinutes >= 60) {
-    return `${inHours} ${inHours === 1 ? 'hour' : 'hours'} ago`
+    return `${inHours} ${inHours === 1 ? t('time.hourLabel') : t('time.hoursLabel')} ${t('time.ago')}`
   } else if (inSeconds >= 60) {
-    return `${inMinutes} ${inMinutes === 1 ? 'minute' : 'minutes'} ago`
+    return `${inMinutes} ${inMinutes === 1 ? t('time.minute') : t('time.minutes')} ${t('time.ago')}`
   } else {
-    return `${inSeconds} ${inSeconds === 1 ? 'second' : 'seconds'} ago`
+    return `${inSeconds} ${inSeconds === 1 ? t('time.second') : t('time.seconds')} ${t('time.ago')}`
   }
 }
 
