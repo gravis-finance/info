@@ -5,7 +5,7 @@ import { ArrowDropDownIcon } from '../../svg'
 import { availableLanguages } from './config'
 
 const StyledDropDown = styled.div`
-  width: 117px;
+  width: ${({ local }) => local ? '150' : '117'}px;
   box-sizing: border-box;
   height: 48px;
   position: relative;
@@ -67,7 +67,7 @@ const StyledDropDown = styled.div`
 const StyledSelectedOption = styled.p`
   position: absolute;
   padding-left: 47px;
-  margin-top: 17px;
+  margin-top: 15px;
   color: ${({ showOptions }) => (showOptions ? '#fff' : '#929292')};
   font-size: 14px;
 
@@ -90,6 +90,7 @@ const StyledOptionsContainer = styled.div`
   border: 1px solid #2e2e2e;
   box-sizing: border-box;
   border-radius: 0 0 6px 6px;
+  z-index: 50;
 
   ${({ toggleMobile }) =>
   toggleMobile
@@ -150,7 +151,7 @@ const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)`
   ${({ reversed }) => (reversed ? 'transform: rotate(180deg);' : '')}
 `
 
-const LanguageSwitch = ({ toggleMobile = true }) => {
+const LanguageSwitch = ({ toggleMobile = true, local }) => {
   const [showOptions, setShowOptions] = useState(false)
   const [selectedOption, setSelectedOption] = useState(availableLanguages[0])
 
@@ -158,6 +159,7 @@ const LanguageSwitch = ({ toggleMobile = true }) => {
     setSelectedOption(availableLanguages.find(language=>language.name === name))
     localStorage.setItem('gravisApplicationsLanguage', name);
     setLanguage(name.toLowerCase())
+    window.location.reload()
   }
 
   const onClickHandler = (event) => {
@@ -182,6 +184,7 @@ const LanguageSwitch = ({ toggleMobile = true }) => {
       onClick={() => setShowOptions(!showOptions)}
       showOptions={showOptions}
       toggleMobile={toggleMobile}
+      local={local}
     >
       <StyledIconContainer toggleMobile={toggleMobile}>
         <selectedOption.icon />

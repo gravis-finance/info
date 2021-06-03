@@ -23,7 +23,7 @@ import { ButtonLink } from '../components/Link'
 import { PageWrapper, ContentWrapper } from '../components'
 import { SavedInfo } from '../components/SavedInfo'
 import { useTranslation } from 'react-multi-lang'
-// import LanguageSwitch from '../components/LanguageSwitcher'
+import LanguageSwitch from '../components/LanguageSwitcher'
 import LocalLoader from '../components/LocalLoader'
 
 const NetworkSwitcher = lazy(() => import('../components/NetworkSwitcher'))
@@ -92,7 +92,7 @@ function GlobalPage() {
             <TYPE.largeHeader>{t('analytics')}</TYPE.largeHeader>
             <Flex alignItems="center">
               <Suspense fallback={null}>
-               {/* <LanguageSwitch /> */}
+                <LanguageSwitch />
                 <NetworkSwitcher />
               </Suspense>
               <StyledSavedInfo>
