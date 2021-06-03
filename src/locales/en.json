@@ -298,6 +298,7 @@
   "swapFor": "Swap {inputAmount} for {outputAmount}",
   "addAnd": "Add {inputAmount} and {outputAmount}",
   "pairInformation": "Pair Information",
+  "noResults": "No results",
 
   "mainMessageDesktop": {
     "nftFocused": "NFT-focused",
