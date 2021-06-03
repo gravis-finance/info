@@ -29,6 +29,10 @@ const StyledLink = styled.a`
   margin-bottom: 20px;
 `
 
+const getCurrentLanguage = () => {
+  return localStorage.getItem('gravisApplicationsLanguage')?.toLowerCase()
+}
+
 const LinksContainer = () => {
   return (
     <StyledContainer>
@@ -36,7 +40,7 @@ const LinksContainer = () => {
         <StyledLink href="https://github.com/gravis-finance" target={'_blank'}>
           <GitHubIcon />
         </StyledLink>
-        <StyledLink href="https://t.me/gravis_finance" target={'_blank'}>
+        <StyledLink href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/gravis_finance'}`} target={'_blank'}>
           <TelegramIcon />
         </StyledLink>
         <StyledLink href="https://twitter.com/gravis_finance" target={'_blank'}>
