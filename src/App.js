@@ -16,10 +16,11 @@ import { BurgerIcon, CloseIcon, GravisIcon, SearchIcon } from './svg'
 import { SavedInfo } from './components/SavedInfo'
 import { useMedia } from 'react-use'
 // import AccountLookup from './pages/AccountLookup'
-import { setDefaultLanguage, setLanguage, setTranslations } from 'react-multi-lang'
+import { setDefaultLanguage, setLanguage, setTranslations, useTranslation } from 'react-multi-lang'
 import ru from './locales/ru.json'
 import en from './locales/en.json'
 import jp from './locales/jp.json'
+import { setTranslationHook } from './utils/data'
 
 const GlobalPage = lazy(() => import('./pages/GlobalPage'))
 const TokenPage = lazy(() => import('./pages/TokenPage'))
@@ -151,6 +152,7 @@ setDefaultLanguage('en')
 const LayoutWrapper = ({ children, savedOpen }) => {
   const isMobile = useMedia('(max-width: 1024px)')
   const [isPushed, setIsPushed] = useState(isMobile)
+  setTranslationHook(useTranslation())
 
   return (
     <>

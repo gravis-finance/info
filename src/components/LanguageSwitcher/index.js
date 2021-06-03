@@ -5,7 +5,7 @@ import { ArrowDropDownIcon } from '../../svg'
 import { availableLanguages } from './config'
 
 const StyledDropDown = styled.div`
-  width: 117px;
+  width: ${({ local }) => local ? '150' : '117'}px;
   box-sizing: border-box;
   height: 48px;
   position: relative;
@@ -151,7 +151,7 @@ const StyledArrowDropDownIcon = styled(ArrowDropDownIcon)`
   ${({ reversed }) => (reversed ? 'transform: rotate(180deg);' : '')}
 `
 
-const LanguageSwitch = ({ toggleMobile = true }) => {
+const LanguageSwitch = ({ toggleMobile = true, local }) => {
   const [showOptions, setShowOptions] = useState(false)
   const [selectedOption, setSelectedOption] = useState(availableLanguages[0])
 
@@ -183,6 +183,7 @@ const LanguageSwitch = ({ toggleMobile = true }) => {
       onClick={() => setShowOptions(!showOptions)}
       showOptions={showOptions}
       toggleMobile={toggleMobile}
+      local={local}
     >
       <StyledIconContainer toggleMobile={toggleMobile}>
         <selectedOption.icon />

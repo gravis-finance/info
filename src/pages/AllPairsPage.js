@@ -12,6 +12,7 @@ import styled from 'styled-components'
 import { Flex } from 'rebass'
 import { SavedInfo } from '../components/SavedInfo'
 import { useTranslation } from 'react-multi-lang'
+import LanguageSwitch from '../components/LanguageSwitcher'
 
 const NetworkSwitcher = lazy(() => import('../components/NetworkSwitcher'))
 // eslint-disable-next-line no-unused-expressions
@@ -38,6 +39,7 @@ function AllPairsPage() {
           <TYPE.largeHeader>{t('topPairs')}</TYPE.largeHeader>
           {!below800 && (
             <Flex alignItems="center">
+              <LanguageSwitch local />
               <Search small={true} big disableMargin />
               <Suspense fallback={null}>
                 <NetworkSwitcher local />{' '}

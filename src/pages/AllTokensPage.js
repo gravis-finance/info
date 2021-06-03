@@ -12,6 +12,7 @@ import styled from 'styled-components'
 import { SavedInfo } from '../components/SavedInfo'
 import { Flex } from 'rebass'
 import { useTranslation } from 'react-multi-lang'
+import LanguageSwitch from '../components/LanguageSwitcher'
 
 const NetworkSwitcher = lazy(() => import('../components/NetworkSwitcher'))
 
@@ -40,6 +41,7 @@ function AllTokensPage() {
           <TYPE.largeHeader>{t('topTokens')}</TYPE.largeHeader>
           {!below600 && (
             <Flex alignItems="center">
+              <LanguageSwitch local />
               <Search small={true} big disableMargin />
               <Suspense fallback={null}>
                 <NetworkSwitcher local />{' '}
