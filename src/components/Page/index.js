@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Text } from 'rebass'
 import { ChevronIcon } from '../../svg'
+import { useTranslation } from 'react-multi-lang'
 
 const PageButtons = styled.div`
   width: 100%;
@@ -44,6 +45,9 @@ const StyledChevronIcon = styled.div`
 `
 
 const PagePicker = ({ onBackClick, onNextClick, page, maxPage }) => {
+
+  const t = useTranslation()
+
   return (
     <PageButtons>
       <div onClick={onBackClick}>
@@ -53,7 +57,7 @@ const PagePicker = ({ onBackClick, onNextClick, page, maxPage }) => {
         </StyledChevronIcon>
       </div>
       <Text color="rgba(255, 255, 255, 0.5)" fontSize={14} padding={'0 16px'}>
-        {'Page ' + page + ' of ' + maxPage}
+        {t('pageOf', {numberFrom: page, numberTo: maxPage})}
       </Text>
       <div onClick={onNextClick}>
         {/*<Arrow faded={page === maxPage}>→</Arrow>*/}

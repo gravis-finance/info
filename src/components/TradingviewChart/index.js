@@ -7,6 +7,7 @@ import { usePrevious } from 'react-use'
 import { Play } from 'react-feather'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import { IconWrapper } from '..'
+import { useTranslation } from 'react-multi-lang'
 
 dayjs.extend(utc)
 
@@ -68,6 +69,8 @@ const TradingViewChart = ({
 
   const [darkMode] = useDarkModeManager()
   const previousTheme = usePrevious(darkMode)
+
+  const t = useTranslation()
 
   // reset the chart if them switches
   useEffect(() => {
@@ -174,7 +177,7 @@ const TradingViewChart = ({
           function setLastBarText() {
             toolTip.innerHTML =
               `<div style="font-size: 16px; margin: 13px 0 4px 8px; color: #FFFFFF; font-weight: 500; letter-spacing: 1px">${title} ${
-                type === CHART_TYPES.BAR && !useWeekly ? '(24hr)' : ''
+                type === CHART_TYPES.BAR && !useWeekly ? `(${t('24hr')})` : ''
               }</div>` +
               `<div style="font-size: 22px; margin: 4px 0 4px 8px; color: #FFFFFF;" >` +
               formattedNum(base ?? 0, true) +
@@ -225,7 +228,7 @@ const TradingViewChart = ({
         }
       })
     }
-  }, [base, baseChange, chartCreated, darkMode, formattedData, title, topScale, type, useWeekly, width])
+  }, [t, base, baseChange, chartCreated, darkMode, formattedData, title, topScale, type, useWeekly, width])
 
   // responsiveness
   useEffect(() => {

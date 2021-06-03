@@ -9,6 +9,7 @@ import { Hover } from '..'
 import Link from '../Link'
 import { useMedia } from 'react-use'
 import { getCurrentNetworkLinks } from '../../utils/data'
+import { useTranslation } from 'react-multi-lang'
 
 // eslint-disable-next-line no-unused-expressions
 import('feather-icons')
@@ -38,23 +39,20 @@ const StyledWarningIcon = styled(AlertTriangle)`
 export default function Warning({ type, show, setShow, address }) {
   const below800 = useMedia('(max-width: 800px)')
 
+  const t = useTranslation()
+
   const textContent = below800 ? (
     <div>
       <Text fontWeight={500} lineHeight={'145.23%'} mt={'10px'} color="#FF4D00">
-        Anyone can create and name any BEP20 token on BSC, including creating fake versions of existing tokens and
-        tokens that claim to represent projects that do not have a token.
+        {t('errorMessages.importTokenWarning')}
       </Text>
       <Text fontWeight={500} lineHeight={'145.23%'} mt={'10px'} color="#FF4D00">
-        Similar to BscScan, this site automatically tracks analytics for all BEP20 tokens independent of token
-        integrity. Please do your own research before interacting with any BEP20 token.
+        {t('errorMessages.importTokenWarning')}
       </Text>
     </div>
   ) : (
     <Text fontWeight={500} lineHeight={'145.23%'} mt={'10px'} color="#FF4D00">
-      Anyone can create and name any BEP20 token on BSC, including creating fake versions of existing tokens and tokens
-      that claim to represent projects that do not have a token. Similar to BscScan, this site automatically tracks
-      analytics for all BEP20 tokens independent of token integrity. Please do your own research before interacting with
-      any BEP20 token.
+      {t('errorMessages.importTokenWarning')}
     </Text>
   )
 
@@ -64,7 +62,7 @@ export default function Warning({ type, show, setShow, address }) {
         <RowFixed>
           <StyledWarningIcon />
           <Text fontWeight={600} lineHeight={'145.23%'} ml={'10px'} color="#FF4D00">
-            Token Safety Alert
+            {t('tokenSafetyAlert')}
           </Text>
         </RowFixed>
         {textContent}
@@ -78,13 +76,13 @@ export default function Warning({ type, show, setShow, address }) {
                 href={getCurrentNetworkLinks().SCAN_LINK + address}
                 target="_blank"
               >
-                View {type === 'token' ? 'token' : 'pair'} contract on BscScan
+                {`${getCurrentNetworkLinks().SCAN_LINK_TITLE} ${type === 'token' ? t('token') : t('pair').toLowerCase()}`}
               </Link>
             </Hover>
             <RowBetween style={{ marginTop: '20px' }}>
               <div />
               <ButtonDark color={'#f82d3a'} style={{ minWidth: '140px' }} onClick={() => setShow(false)}>
-                I understand
+                {t('iUnderstand')}
               </ButtonDark>
             </RowBetween>
           </div>
@@ -98,11 +96,11 @@ export default function Warning({ type, show, setShow, address }) {
                 href={getCurrentNetworkLinks().SCAN_LINK + address}
                 target="_blank"
               >
-                View {type === 'token' ? 'token' : 'pair'} contract on BscScan
+                {`${getCurrentNetworkLinks().SCAN_LINK_TITLE} ${type === 'token' ? t('token') : t('pair').toLowerCase()}`}
               </Link>
             </Hover>
             <ButtonDark color={'#f82d3a'} style={{ minWidth: '140px' }} onClick={() => setShow(false)}>
-              I understand
+              {t('iUnderstand')}
             </ButtonDark>
           </RowBetween>
         )}

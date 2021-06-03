@@ -5,6 +5,7 @@ import { Text, Flex } from 'rebass'
 import TokenLogo from '../TokenLogo'
 import { useHistory } from 'react-router-dom'
 import DoubleTokenLogo from '../DoubleLogo'
+import { useTranslation } from 'react-multi-lang'
 
 const StyledBookmarkIcon = styled.div`
   width: 32px;
@@ -156,6 +157,7 @@ const PairInstance = ({
 }
 
 const PinnedInfo = ({ selectedAddress, setIsSaved, list, type, setIsRefreshed }) => {
+  const t = useTranslation()
   switch (type) {
     case 'accounts':
       return (
@@ -180,7 +182,7 @@ const PinnedInfo = ({ selectedAddress, setIsSaved, list, type, setIsRefreshed })
         ))
       return (
         <Text color="rgba(255, 255, 255, 0.5)" fontSize={14} fontWeight={400}>
-          Pinned pairs will appear here.
+          {t('pinnedPairsWillAppear')}
         </Text>
       )
     case 'tokens':
@@ -198,7 +200,7 @@ const PinnedInfo = ({ selectedAddress, setIsSaved, list, type, setIsRefreshed })
       else
         return (
           <Text color="rgba(255, 255, 255, 0.5)" fontSize={14} fontWeight={400}>
-            Pinned tokens will appear here.
+            {t('pinnedTokensWillAppear')}
           </Text>
         )
     default:
@@ -211,6 +213,7 @@ const SavedInfo = ({ ml, setIsSaved, selectedAddress, ...props }) => {
   const [pinnedTokensList, setPinnedTokensList] = useState()
   const [pinnedPairsList, setPinnedPairsList] = useState()
   const [isRefreshed, setIsRefreshed] = useState(false)
+  const t = useTranslation()
 
   const onClickHandler = (event) => {
     if (!event.target.closest(StyledSaveContainer) && !event.target.closest(StyledBookmarkIcon)) setIsOpened(false)
@@ -243,7 +246,7 @@ const SavedInfo = ({ ml, setIsSaved, selectedAddress, ...props }) => {
             <StyledFlex alignItems="center">
               <BookmarkIcon />
               <Text color="#FFFFFF" fontSize={14} fontWeight={500} ml="8px">
-                Saved
+                {t('saved')}
               </Text>
             </StyledFlex>
             <StyledArrowRightIcon style={{ cursor: 'pointer' }} onClick={() => setIsOpened(false)} />
@@ -258,7 +261,7 @@ const SavedInfo = ({ ml, setIsSaved, selectedAddress, ...props }) => {
           {/*</Text>*/}
           {/*<PinnedInfo type={'accounts'} />*/}
           <Text color="#FFFFFF" fontSize={18} fontWeight={500} mt={42} mb={16}>
-            Pinned Pairs
+            {t('pinnedPairs')}
           </Text>
           <PinnedInfo
             type={'pairs'}
@@ -268,7 +271,7 @@ const SavedInfo = ({ ml, setIsSaved, selectedAddress, ...props }) => {
             setIsRefreshed={setIsRefreshed}
           />
           <Text color="#FFFFFF" fontSize={18} fontWeight={500} mt={32} mb={16}>
-            Pinned Tokens
+            {t('pinnedTokens')}
           </Text>
           <PinnedInfo
             type={'tokens'}
