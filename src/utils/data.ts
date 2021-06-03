@@ -13,6 +13,8 @@ interface BasicData {
   }
 }
 
+let t
+
 // Override data return from graph - usually because proxy token has changed
 // names since entitiy was created in subgraph
 // keys are lowercase token addresses <--------
@@ -42,14 +44,24 @@ export function updateNameData(data: BasicData): BasicData | undefined {
   return data
 }
 
+export function setTranslationHook(translationHook){
+  t = translationHook
+}
+
 export function getCurrentNetworkLinks() {
   const params = new URLSearchParams(window.location.search.toString())
   // ToDo Add name validation
   const networkName = params.get('network')
 
   if (networkName) {
+    if(t)
+      networks[networks.findIndex((network) => network.title === networkName)].links.SCAN_LINK_TITLE =
+        t(networks[networks.findIndex((network) => network.title === networkName)].links.SCAN_LINK_TITLE)
     return networks[networks.findIndex((network) => network.title === networkName)].links
   } else {
+    if(t)
+      networks[networks.findIndex((network) => network.title === 'huobi')].links.SCAN_LINK_TITLE =
+        t(networks[networks.findIndex((network) => network.title === 'huobi')].links.SCAN_LINK_TITLE)
     return networks[networks.findIndex((network) => network.title === 'huobi')].links
   }
 }

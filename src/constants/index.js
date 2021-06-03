@@ -64,7 +64,7 @@ export const networks = [
       SCAN_LINK_TOKEN: `${process.env.REACT_APP_HECO_INFO_LINK}/token/`,
       SCAN_LINK_BLOCK: `${process.env.REACT_APP_HECO_INFO_LINK}/block/`,
       TOKEN_TITLE: 'HT',
-      SCAN_LINK_TITLE: 'View on HecoInfo',
+      SCAN_LINK_TITLE: 'viewOnHecoInfo',
       TOKENS_URL: (tokenAddress) => {
         // return `https://mdex.com/token-icons/heco/${tokenAddress}.png`
         // return console.log(hecoTokensConfig.tokens.find(token => token.address === tokenAddress))
@@ -89,7 +89,7 @@ export const networks = [
       SCAN_LINK_TOKEN: `${process.env.REACT_APP_BSC_SCAN_LINK}/token/`,
       SCAN_LINK_BLOCK: `${process.env.REACT_APP_BSC_SCAN_LINK}/block/`,
       TOKEN_TITLE: 'BNB',
-      SCAN_LINK_TITLE: 'View on BscScan',
+      SCAN_LINK_TITLE: 'viewOnBscscan',
       TOKENS_URL: (tokenName) => {
         return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/${tokenName}/logo.png`
       },
