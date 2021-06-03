@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Tooltip } from '../QuestionHelper'
+// import { useTranslation } from 'react-multi-lang'
 
 const TextWrapper = styled.div`
   position: relative;
@@ -22,9 +23,17 @@ const TextWrapper = styled.div`
 const FormattedName = ({ text, maxCharacters, margin = false, adjustSize = false, fontSize, link, ...rest }) => {
   const [showHover, setShowHover] = useState(false)
 
+  // const { t } = useTranslation()
+
   if (!text) {
     return ''
   }
+
+  // const filterText = (text) => {
+  //   // return text
+  //   if(text.includes('Token'))
+  //     return `${text.slice(0, text.indexOf('Token'))} suka ${text.slice(text.indexOf('Token')+5)}`
+  // }
 
   if (text.length > maxCharacters) {
     return (

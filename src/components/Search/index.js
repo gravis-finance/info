@@ -496,7 +496,7 @@ export const Search = ({ small = false, disableMargin, big, singlePage }) => {
         <div>
           {filteredPairList && Object.keys(filteredPairList).length === 0 && (
             <MenuItem>
-              <TYPE.body style={{color: 'rgba(255, 255, 255, 0.5)'}}>No results</TYPE.body>
+              <TYPE.body style={{color: 'rgba(255, 255, 255, 0.5)'}}>{t('noResults')}</TYPE.body>
             </MenuItem>
           )}
           {filteredPairList &&
@@ -508,7 +508,7 @@ export const Search = ({ small = false, disableMargin, big, singlePage }) => {
                   <MenuItem>
                     <DoubleTokenLogo a0={pair?.token0?.id} a1={pair?.token1?.id} margin={true} />
                     <TYPE.body style={{ marginLeft: '10px' }}>
-                      {pair.token0.symbol + '-' + pair.token1.symbol} Pair
+                      {pair.token0.symbol + '-' + pair.token1.symbol} {t('pair')}
                     </TYPE.body>
                   </MenuItem>
                 </BasicLink>
@@ -533,7 +533,7 @@ export const Search = ({ small = false, disableMargin, big, singlePage }) => {
         <div>
           {Object.keys(filteredTokenList).length === 0 && (
             <MenuItem>
-              <TYPE.body style={{color: 'rgba(255, 255, 255, 0.5)'}}>No results</TYPE.body>
+              <TYPE.body style={{color: 'rgba(255, 255, 255, 0.5)'}}>{t('noResults')}</TYPE.body>
             </MenuItem>
           )}
           {filteredTokenList.slice(0, tokensShown).map((token) => {
