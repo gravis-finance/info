@@ -299,6 +299,7 @@
   "addAnd": "Add {inputAmount} and {outputAmount}",
   "pairInformation": "Pair Information",
   "noResults": "No results",
+  "language": "en",
 
   "mainMessageDesktop": {
     "nftFocused": "NFT-focused",
