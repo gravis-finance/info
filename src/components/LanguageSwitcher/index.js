@@ -134,6 +134,11 @@ const StyledIconContainer = styled.div`
   position: absolute;
   top: 12px;
   left: 14px;
+  
+  > svg {
+    width: 22px;
+    height: 22px;
+  }
 
   ${({ toggleMobile }) =>
   toggleMobile
