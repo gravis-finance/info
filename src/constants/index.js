@@ -1,5 +1,6 @@
-import { BinanceIcon, HuobiIcon } from '../svg'
+import { BinanceIcon, HuobiIcon, PolygonIcon } from '../svg'
 import hecoTokensConfig from '../config/tokens/heco.json'
+import polygonTokensConfig from '../config/tokens/matic.json'
 
 export const FACTORY_ADDRESS = '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD'
 
@@ -92,6 +93,29 @@ export const networks = [
       SCAN_LINK_TITLE: 'viewOnBscscan',
       TOKENS_URL: (tokenName) => {
         return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/${tokenName}/logo.png`
+      },
+    }
+  },
+  {
+    title: 'polygon',
+    label: 'MATIC',
+    icon: PolygonIcon,
+    links: {
+      CLIENT_APOLLO_LINK: 'https://api.thegraph.com/subgraphs/name/darth-crypto/gravis-finance',
+      HEALTH_CLIENT_LINK: 'https://api.thegraph.com/index-node/graphql',
+      BLOCK_CLIENT_LINK: 'https://api.thegraph.com/subgraphs/name/sameepsi/maticblocks',
+      SUBGRAPH_NAME: 'darth-crypto/gravis-finance',
+      SCAN_LINK: `${process.env.REACT_APP_POLYGON_SCAN_LINK}/address/`,
+      SCAN_LINK_TX: `${process.env.REACT_APP_POLYGON_SCAN_LINK}/tx/`,
+      SCAN_LINK_TOKEN: `${process.env.REACT_APP_POLYGON_SCAN_LINK}/token/`,
+      SCAN_LINK_BLOCK: `${process.env.REACT_APP_POLYGON_SCAN_LINK}/block/`,
+      TOKEN_TITLE: 'MATIC',
+      SCAN_LINK_TITLE: 'viewOnPolygonScan',
+      TOKENS_URL: (tokenAddress) => {
+        if(tokenAddress)
+          return `${polygonTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI.includes('http')
+          ? polygonTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI
+          : window.location.origin + polygonTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI}`
       },
     }
   }
