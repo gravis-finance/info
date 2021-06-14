@@ -126,7 +126,7 @@ const StyledOption = styled.div`
   align-items: center;
 
   > *:first-child {
-    margin-right: 8px;
+    margin-right: 12px;
   }
 
   :hover {
