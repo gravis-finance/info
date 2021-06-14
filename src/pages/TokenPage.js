@@ -471,7 +471,7 @@ function TokenPage({ address, history }) {
                       {t('address')}
                     </TYPE.def>
                   </StyledPairInformationBlock>
-                  <StyledPairInformationBlock style={{ paddingLeft: '16px', marginTop: '16px', alignItems: 'center' }}>
+                  <StyledPairInformationBlock style={{ paddingLeft: '16px', marginTop: '16px', alignItems: 'center', marginBottom: '12px', marginRight: '12px' }}>
                     <Text style={{ fontSize: '14px' }} fontSize={24} fontWeight="500">
                       <FormattedName text={symbol} maxCharacters={12} style={{ color: '#009CE1' }} />
                     </Text>
