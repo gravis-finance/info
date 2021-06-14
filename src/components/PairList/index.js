@@ -290,7 +290,8 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
                 setSortDirection(sortedColumn !== SORT_FIELD.VOL_7DAYS ? true : !sortDirection)
               }}
             >
-              {t('volume7D')} <SortDirection found={sortedColumn === SORT_FIELD.VOL_7DAYS} sortDirection={sortDirection} />
+              {t('volume7D')}{' '}
+              <SortDirection found={sortedColumn === SORT_FIELD.VOL_7DAYS} sortDirection={sortDirection} />
             </ClickableText>
           </Flex>
         )}

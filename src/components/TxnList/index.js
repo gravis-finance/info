@@ -158,11 +158,11 @@ function getTransactionType(event, symbol0, symbol1, t) {
   const formattedS1 = symbol1?.length > 8 ? symbol1.slice(0, 7) + '...' : symbol1
   switch (event) {
     case TXN_TYPE.ADD:
-      return t('addAnd', { inputAmount: formattedS0, outputAmount: formattedS1})
+      return t('addAnd', { inputAmount: formattedS0, outputAmount: formattedS1 })
     case TXN_TYPE.REMOVE:
-      return t('removeTransaction', { transactionA: formattedS0, transactionB: formattedS1})
+      return t('removeTransaction', { transactionA: formattedS0, transactionB: formattedS1 })
     case TXN_TYPE.SWAP:
-      return t('swapFor', { inputAmount: formattedS0, outputAmount: formattedS1})
+      return t('swapFor', { inputAmount: formattedS0, outputAmount: formattedS1 })
     default:
       return ''
   }
@@ -413,7 +413,7 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
                   setSortDirection(sortedColumn !== SORT_FIELD.AMOUNT1 ? true : !sortDirection)
                 }}
               >
-                {symbol1Override ? symbol1Override +  ` ${t('amount')}` : `${t('tokenAmount')}`}{' '}
+                {symbol1Override ? symbol1Override + ` ${t('amount')}` : `${t('tokenAmount')}`}{' '}
                 <SortDirection found={sortedColumn === SORT_FIELD.AMOUNT1} sortDirection={sortDirection} />
               </ClickableText>
             </Flex>
@@ -437,7 +437,8 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
                 setSortDirection(sortedColumn !== SORT_FIELD.TIMESTAMP ? true : !sortDirection)
               }}
             >
-              {t('time.time')} <SortDirection found={sortedColumn === SORT_FIELD.TIMESTAMP} sortDirection={sortDirection} />
+              {t('time.time')}{' '}
+              <SortDirection found={sortedColumn === SORT_FIELD.TIMESTAMP} sortDirection={sortDirection} />
             </ClickableText>
           </Flex>
         </>

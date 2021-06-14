@@ -8,7 +8,6 @@ let selectedNetwork = getCurrentNetworkLinks()
 export const client = new ApolloClient({
   link: new HttpLink({
     uri: selectedNetwork.CLIENT_APOLLO_LINK,
-    //uri: 'https://graphtest.alium.finance/subgraphs/name/aliumswap/alium'
   }),
   cache: new InMemoryCache(),
   shouldBatch: true,
