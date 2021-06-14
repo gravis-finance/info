@@ -29,6 +29,8 @@ export { default as BurgerIcon } from './Icons/Burger'
 
 export { default as BinanceIcon } from './Icons/Bsc'
 export { default as HuobiIcon } from './Icons/Huobi'
+export { default as PolygonIcon } from './Icons/Polygon'
+
 
 export { default as ArrowDropDownIcon } from './Icons/ArrowDropDown'
 

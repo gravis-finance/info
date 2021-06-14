@@ -107,6 +107,7 @@
   "copyAddress": "Test",
   "viewOnBscscan": "Test",
   "viewOnHecoInfo": "Test",
+  "viewOnPolygonScan": "Test",
   "clearAll": "Test",
   "close": "Test",
   "noRecentTransactions": "Test",
