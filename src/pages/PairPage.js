@@ -613,7 +613,7 @@ function PairPage({ pairAddress, history }) {
                     </RowFixed>
                   </StyledPairInformationBlock>
                   <StyledPairInformationBlock
-                    style={{ paddingLeft: '16px', marginTop: '16px', alignItems: 'center', marginBottom: '26px' }}
+                    style={{ paddingLeft: '16px', marginTop: '16px', alignItems: 'center', marginBottom: '12px' }}
                   >
                     <Column>
                       <TYPE.main>
