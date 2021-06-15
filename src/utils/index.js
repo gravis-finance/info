@@ -5,7 +5,7 @@ import utc from 'dayjs/plugin/utc'
 import { client, blockClient } from '../apollo/client'
 import { GET_BLOCK, GET_BLOCKS, SHARE_VALUE } from '../apollo/queries'
 import { Text } from 'rebass'
-import { timeframeOptions } from '../constants'
+import { comparedNetworksIds, timeframeOptions } from '../constants'
 import Numeral from 'numeral'
 import { getCurrentNetworkLinks } from './data'
 
@@ -461,4 +461,21 @@ export function isEquivalent(a, b) {
     }
   }
   return true
+}
+
+export const getNetworkForAnalytics = (networkName) => {
+  let networkChainId = ''
+
+  comparedNetworksIds.find((network)=> {
+    if(network.name === networkName) {
+      networkChainId = network.networks[process.env.REACT_APP_NODE_ENV === 'development' ? 1 : 0]
+    }
+    return null
+  })
+  return networkChainId
+}
+
+export const getCurrentNetworkName = () => {
+  const params = new URLSearchParams(window.location.search.toString())
+  return params.get('network')
 }
