@@ -142,3 +142,18 @@ export const networks = [
     },
   },
 ]
+
+export const comparedNetworksIds = [
+  {
+    name: "huobi",
+    networks: [128, 256],
+  },
+  {
+    name: "binance",
+    networks: [56, 97],
+  },
+  {
+    name: "polygon",
+    networks: [137, 80001],
+  }
+]
