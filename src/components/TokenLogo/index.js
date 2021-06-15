@@ -14,13 +14,13 @@ const Inline = styled.div`
 `
 
 const Image = styled.img`
-  width: ${({ size }) => size ? size : '18px'};
-  height: ${({ size }) => size ? size : '18px'};
+  width: ${({ size }) => (size ? size : '18px')};
+  height: ${({ size }) => (size ? size : '18px')};
   padding: 2px;
   background-color: #404040;
   border-radius: 50%;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.075);
-  ${({bordered}) => bordered ? 'border: 4px solid #292929;' : ''}
+  ${({ bordered }) => (bordered ? 'border: 4px solid #292929;' : '')}
 `
 
 const StyledEthereumLogo = styled.div`

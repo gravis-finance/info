@@ -334,16 +334,31 @@ function TokenPage({ address, history }) {
                   {/*) : (*/}
                   {/*  <></>*/}
                   {/*)}*/}
-                  {!isSaved ? <StyledPlusIcon onClick={onClickHandler}><PlusIcon /></StyledPlusIcon>
-                    : <StyledBookmarkIcon onClick={onBookmarkClickHandler}><BookmarkIcon /></StyledBookmarkIcon>
-                  }
-                  <StyledButtonLight style={{height: '48px'}}>
-                    <Link external href={getPoolLink(token0?.id, token1?.id)} style={{display: 'flex', alignItems: 'center'}}>
-                     <BorderedPlusIcon style={{marginRight: '8px'}}/> <span>{t('addLiquidity')}</span>
+                  {!isSaved ? (
+                    <StyledPlusIcon onClick={onClickHandler}>
+                      <PlusIcon />
+                    </StyledPlusIcon>
+                  ) : (
+                    <StyledBookmarkIcon onClick={onBookmarkClickHandler}>
+                      <BookmarkIcon />
+                    </StyledBookmarkIcon>
+                  )}
+                  <StyledButtonLight style={{ height: '48px' }}>
+                    <Link
+                      external
+                      href={getPoolLink(token0?.id, token1?.id)}
+                      style={{ display: 'flex', alignItems: 'center' }}
+                    >
+                      <BorderedPlusIcon style={{ marginRight: '8px' }} /> <span>{t('addLiquidity')}</span>
                     </Link>
                   </StyledButtonLight>
                   <Link href={getSwapLink(address)} target="_blank">
-                    <ButtonDark ml={'.5rem'} mr={below1080 && '.5rem'} color={backgroundColor} style={{height: '48px'}}>
+                    <ButtonDark
+                      ml={'.5rem'}
+                      mr={below1080 && '.5rem'}
+                      color={backgroundColor}
+                      style={{ height: '48px' }}
+                    >
                       {t('trade')}
                     </ButtonDark>
                   </Link>
@@ -380,29 +395,31 @@ function TokenPage({ address, history }) {
                   <TYPE.def fontSize={14}>{liquidityChange}</TYPE.def>
                 </StyledCard>
                 <StyledCard>
-                    <RowBetween>
-                      <TYPE.defHeader>{t('volume24hrs')} {usingUtVolume && '(Untracked)'}</TYPE.defHeader>
-                      <div />
-                    </RowBetween>
-                    {/*<RowBetween align="flex-end">*/}
-                      <TYPE.def fontSize={22} lineHeight={1} fontWeight={500}>
-                        {volume}
-                      </TYPE.def>
-                      <TYPE.def fontSize={14}>{volumeChange}</TYPE.def>
-                    {/*</RowBetween>*/}
+                  <RowBetween>
+                    <TYPE.defHeader>
+                      {t('volume24hrs')} {usingUtVolume && '(Untracked)'}
+                    </TYPE.defHeader>
+                    <div />
+                  </RowBetween>
+                  {/*<RowBetween align="flex-end">*/}
+                  <TYPE.def fontSize={22} lineHeight={1} fontWeight={500}>
+                    {volume}
+                  </TYPE.def>
+                  <TYPE.def fontSize={14}>{volumeChange}</TYPE.def>
+                  {/*</RowBetween>*/}
                 </StyledCard>
 
                 <StyledCard>
-                    <RowBetween>
-                      <TYPE.defHeader>{t('transactions24h')}</TYPE.defHeader>
-                      <div />
-                    </RowBetween>
-                    {/*<RowBetween align="flex-end">*/}
-                      <TYPE.def fontSize={22} lineHeight={1} fontWeight={500}>
-                        {oneDayTxns ? localNumber(oneDayTxns) : oneDayTxns === 0 ? 0 : '-'}
-                      </TYPE.def>
-                      <TYPE.def fontSize={14}>{txnChangeFormatted}</TYPE.def>
-                    {/*</RowBetween>*/}
+                  <RowBetween>
+                    <TYPE.defHeader>{t('transactions24h')}</TYPE.defHeader>
+                    <div />
+                  </RowBetween>
+                  {/*<RowBetween align="flex-end">*/}
+                  <TYPE.def fontSize={22} lineHeight={1} fontWeight={500}>
+                    {oneDayTxns ? localNumber(oneDayTxns) : oneDayTxns === 0 ? 0 : '-'}
+                  </TYPE.def>
+                  <TYPE.def fontSize={14}>{txnChangeFormatted}</TYPE.def>
+                  {/*</RowBetween>*/}
                 </StyledCard>
                 <Panel
                   style={{
@@ -471,7 +488,15 @@ function TokenPage({ address, history }) {
                       {t('address')}
                     </TYPE.def>
                   </StyledPairInformationBlock>
-                  <StyledPairInformationBlock style={{ paddingLeft: '16px', marginTop: '16px', alignItems: 'center', marginBottom: '12px', marginRight: '12px' }}>
+                  <StyledPairInformationBlock
+                    style={{
+                      paddingLeft: '16px',
+                      marginTop: '16px',
+                      alignItems: 'center',
+                      marginBottom: '12px',
+                      marginRight: '12px',
+                    }}
+                  >
                     <Text style={{ fontSize: '14px' }} fontSize={24} fontWeight="500">
                       <FormattedName text={symbol} maxCharacters={12} style={{ color: '#009CE1' }} />
                     </Text>

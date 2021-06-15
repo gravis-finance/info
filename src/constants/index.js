@@ -58,7 +58,6 @@ export const FEE_WARNING_TOKENS = ['0xd46ba6d942050d489dbd938a2c909a5d5039a161']
 
 // export const CLIENT_APOLLO_LINK = window.location.search.network === 'huobi'
 
-
 export const networks = [
   {
     title: 'huobi',
@@ -78,12 +77,19 @@ export const networks = [
       TOKENS_URL: (tokenAddress) => {
         // return `https://mdex.com/token-icons/heco/${tokenAddress}.png`
         // return console.log(hecoTokensConfig.tokens.find(token => token.address === tokenAddress))
-        if(tokenAddress)
-          return `${hecoTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI.includes('http')
-          ? hecoTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI
-          : window.location.origin + hecoTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI}`
+        if (tokenAddress)
+          return `${
+            hecoTokensConfig.tokens
+              .find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+              ?.logoURI.includes('http')
+              ? hecoTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+                  ?.logoURI
+              : window.location.origin +
+                hecoTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+                  ?.logoURI
+          }`
       },
-    }
+    },
   },
   {
     title: 'binance',
@@ -103,7 +109,7 @@ export const networks = [
       TOKENS_URL: (tokenName) => {
         return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/${tokenName}/logo.png`
       },
-    }
+    },
   },
   {
     title: 'polygon',
@@ -121,11 +127,18 @@ export const networks = [
       TOKEN_TITLE: 'MATIC',
       SCAN_LINK_TITLE: 'viewOnPolygonScan',
       TOKENS_URL: (tokenAddress) => {
-        if(tokenAddress)
-          return `${polygonTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI.includes('http')
-          ? polygonTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI
-          : window.location.origin + polygonTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI}`
+        if (tokenAddress)
+          return `${
+            polygonTokensConfig.tokens
+              .find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+              ?.logoURI.includes('http')
+              ? polygonTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+                  ?.logoURI
+              : window.location.origin +
+                polygonTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+                  ?.logoURI
+          }`
       },
-    }
-  }
+    },
+  },
 ]
