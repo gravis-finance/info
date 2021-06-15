@@ -237,7 +237,7 @@ function SideNav({ setIsPushedState, isPushed }) {
             </BasicLink>
             <Link
               external
-              href={`${process.env.REACT_APP_GRAVIS_SWAP_URL}?gravisLanguage=${t('language')}&network=${getNetworkForAnalytics(getCurrentNetworkName())}`}
+              href={`${process.env.REACT_APP_GRAVIS_SWAP_URL}/swap?network=${getNetworkForAnalytics(getCurrentNetworkName())}&gravisLanguage=${t('language')}`}
               isPushed={isPushed}
             >
               <Option
