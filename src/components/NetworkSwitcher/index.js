@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 // import { NetworksConfig } from '../WalletModal/types'
 // import { getNetworks } from '../WalletModal/config.js'
-import { ArrowDropDownIcon, PolygonIcon } from '../../svg'
 // import switchNetwork from '../../util/switchNetwork'
 // import { getNetworkTitles } from '../../util/getNetworkId'
-import { BinanceIcon } from '../../svg'
-import { HuobiIcon } from '../../svg'
+import { ArrowDropDownIcon } from '../../svg'
 import { networks } from '../../constants'
 
 const StyledDropDown = styled.div`
@@ -202,7 +200,7 @@ const NetworkSwitch = ({ toggleMobile = true, local }) => {
         <StyledOptionsContainer toggleMobile={toggleMobile}>
           {networks.map((item) => (
             <StyledOption key={item.title} onClick={() => handleClick(item)}>
-              {item.label === 'HECO' ? <HuobiIcon /> : item.label === 'MATIC' ? <PolygonIcon /> : <BinanceIcon />}
+              <item.icon />
               {item.label}
             </StyledOption>
           ))}

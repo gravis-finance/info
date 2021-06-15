@@ -76,7 +76,9 @@ export default function Warning({ type, show, setShow, address }) {
                 href={getCurrentNetworkLinks().SCAN_LINK + address}
                 target="_blank"
               >
-                {`${getCurrentNetworkLinks().SCAN_LINK_TITLE} ${type === 'token' ? t('token') : t('pair').toLowerCase()}`}
+                {`${getCurrentNetworkLinks().SCAN_LINK_TITLE} ${
+                  type === 'token' ? t('token') : t('pair').toLowerCase()
+                }`}
               </Link>
             </Hover>
             <RowBetween style={{ marginTop: '20px' }}>
@@ -96,7 +98,9 @@ export default function Warning({ type, show, setShow, address }) {
                 href={getCurrentNetworkLinks().SCAN_LINK + address}
                 target="_blank"
               >
-                {`${getCurrentNetworkLinks().SCAN_LINK_TITLE} ${type === 'token' ? t('token') : t('pair').toLowerCase()}`}
+                {`${getCurrentNetworkLinks().SCAN_LINK_TITLE} ${
+                  type === 'token' ? t('token') : t('pair').toLowerCase()
+                }`}
               </Link>
             </Hover>
             <ButtonDark color={'#f82d3a'} style={{ minWidth: '140px' }} onClick={() => setShow(false)}>
