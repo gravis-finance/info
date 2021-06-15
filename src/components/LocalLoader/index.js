@@ -40,7 +40,6 @@ const Wrapper = styled.div`
 // `
 
 const LocalLoader = ({ fill, global, height }) => {
-
   const t = useTranslation()
   return (
     <Wrapper fill={fill} height={height}>

@@ -108,6 +108,7 @@
   "copyAddress": "Copy Address",
   "viewOnBscscan": "View on BSCScan",
   "viewOnHecoInfo": "View on HecoInfo",
+  "viewOnPolygonScan": "View on PolygonScan",
   "clearAll": "clear all",
   "close": "Close",
   "noRecentTransactions": "No recent transactions",
@@ -299,6 +300,7 @@
   "addAnd": "Add {inputAmount} and {outputAmount}",
   "pairInformation": "Pair Information",
   "noResults": "No results",
+  "language": "en",
 
   "mainMessageDesktop": {
     "nftFocused": "NFT-focused",

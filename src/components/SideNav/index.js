@@ -234,7 +234,11 @@ function SideNav({ setIsPushedState, isPushed }) {
                 {!isPushed ? t('mainMenu.analytics.pairs') : ''}
               </Option>
             </BasicLink>
-            <Link external href={process.env.REACT_APP_GRAVIS_SWAP_URL} isPushed={isPushed}>
+            <Link
+              external
+              href={`${process.env.REACT_APP_GRAVIS_SWAP_URL}?gravisLanguage=${t('language')}`}
+              isPushed={isPushed}
+            >
               <Option
                 activeText={
                   (history.location.pathname.split('/')[1] === '' || history.location.pathname.split('/')[1] === '') ??

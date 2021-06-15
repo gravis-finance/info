@@ -17,7 +17,6 @@ import { SavedInfo } from './components/SavedInfo'
 import { useMedia } from 'react-use'
 // import AccountLookup from './pages/AccountLookup'
 import { setDefaultLanguage, setLanguage, setTranslations, useTranslation } from 'react-multi-lang'
-import ru from './locales/ru.json'
 import en from './locales/en.json'
 import jp from './locales/jp.json'
 import { setTranslationHook } from './utils/data'
@@ -146,8 +145,42 @@ const StyledSearchIcon = styled(SearchIcon)`
     stroke: #929292;
   }
 `
-setTranslations({ru, en, jp})
-setDefaultLanguage('en')
+setTranslations({ en, jp })
+const localStorageLanguageItem = 'gravisApplicationsLanguage'
+const urlSearchLanguageParam = 'gravisLanguage'
+
+const getDefaultLanguage = () => {
+  if (localStorage.getItem(localStorageLanguageItem))
+    return localStorage.getItem(localStorageLanguageItem)?.toLowerCase()
+  if (navigator.language) {
+    if (navigator.language.includes('en')) {
+      localStorage.setItem(localStorageLanguageItem, 'EN')
+      return 'en'
+    }
+    if (navigator.language.includes('jp') || navigator.language.includes('jpn')) {
+      localStorage.setItem(localStorageLanguageItem, 'JP')
+      return 'jp'
+    }
+  } else {
+    localStorage.setItem(localStorageLanguageItem, 'EN')
+    return 'en'
+  }
+}
+
+const getLanguageSearchParam = () => {
+  const { search } = window.location
+  if (search.includes(urlSearchLanguageParam)) {
+    const language = search.slice(search.indexOf(urlSearchLanguageParam) + urlSearchLanguageParam.length + 1)
+    if (language.toLowerCase() === 'jp' || language.toLowerCase() === 'en') {
+      localStorage.setItem(localStorageLanguageItem, language.toUpperCase())
+      return language.toLowerCase()
+    }
+    return getDefaultLanguage()
+  }
+  return getDefaultLanguage()
+}
+
+setDefaultLanguage(getLanguageSearchParam())
 
 const LayoutWrapper = ({ children, savedOpen }) => {
   const isMobile = useMedia('(max-width: 1024px)')
@@ -192,10 +225,9 @@ function App() {
 
   useEffect(() => {
     if (!window.location.search) window.location.search = 'network=huobi'
-    if(localStorage.getItem('gravisApplicationsLanguage'))
+    if (localStorage.getItem('gravisApplicationsLanguage'))
       setLanguage(localStorage.getItem('gravisApplicationsLanguage')?.toLocaleLowerCase())
-    else
-      setLanguage('en')
+    else setLanguage('en')
   }, [])
 
   return (

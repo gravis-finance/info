@@ -108,6 +108,7 @@
   "copyAddress": "アドレスをコピー",
   "viewOnBscscan": "BSCScanで見る",
   "viewOnHecoInfo": "HecoInfoで見る",
+  "viewOnPolygonScan": "PolygonScanで見る",
   "clearAll": "すべてクリア",
   "close": "閉じる",
   "noRecentTransactions": "最近のトランザクションがありません",
@@ -299,6 +300,7 @@
   "addAnd": "{inputAmount} および {outputAmount} を追加します。",
   "pairInformation": "ペア情報",
   "noResults": "結果がありません",
+  "language": "jp",
 
   "mainMessageDesktop": {
     "nftFocused": "NFTに焦点を当てた",

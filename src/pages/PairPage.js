@@ -472,7 +472,9 @@ function PairPage({ pairAddress, history }) {
               <PanelWrapper style={{ marginTop: '5px' }}>
                 <StyledCard>
                   <RowBetween>
-                    <TYPE.defHeader>{t('totalLiquidity')} {!usingTracked ? '(Untracked)' : ''}</TYPE.defHeader>
+                    <TYPE.defHeader>
+                      {t('totalLiquidity')} {!usingTracked ? '(Untracked)' : ''}
+                    </TYPE.defHeader>
                     <div />
                   </RowBetween>
                   {/*<RowBetween align="flex-end">*/}
@@ -482,7 +484,9 @@ function PairPage({ pairAddress, history }) {
                 </StyledCard>
                 <StyledCard>
                   <RowBetween>
-                    <TYPE.defHeader>{t('volume24hrs')} {usingUtVolume && '(Untracked)'}</TYPE.defHeader>
+                    <TYPE.defHeader>
+                      {t('volume24hrs')} {usingUtVolume && '(Untracked)'}
+                    </TYPE.defHeader>
                     <div />
                   </RowBetween>
                   {/*<RowBetween align="flex-end">*/}
@@ -613,7 +617,7 @@ function PairPage({ pairAddress, history }) {
                     </RowFixed>
                   </StyledPairInformationBlock>
                   <StyledPairInformationBlock
-                    style={{ paddingLeft: '16px', marginTop: '16px', alignItems: 'center', marginBottom: '26px' }}
+                    style={{ paddingLeft: '16px', marginTop: '16px', alignItems: 'center', marginBottom: '12px' }}
                   >
                     <Column>
                       <TYPE.main>
