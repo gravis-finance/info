@@ -7,7 +7,7 @@ import { usePrevious } from 'react-use'
 import { Play } from 'react-feather'
 import { useDarkModeManager } from '../../contexts/LocalStorage'
 import { IconWrapper } from '..'
-import { useTranslation } from 'react-multi-lang'
+import { useTranslation, getLanguage } from 'react-multi-lang'
 
 dayjs.extend(utc)
 
@@ -23,6 +23,11 @@ const Wrapper = styled.div`
 
 // constant height for charts
 const HEIGHT = 300
+
+const LOCALE = {
+  en: 'en-US',
+  jp: 'ja-JP'
+}
 
 const TradingViewChart = ({
   type = CHART_TYPES.BAR,
@@ -71,6 +76,17 @@ const TradingViewChart = ({
   const previousTheme = usePrevious(darkMode)
 
   const t = useTranslation()
+  const lang = getLanguage()
+
+  useEffect(() => {
+    if (chartCreated) {
+      chartCreated.applyOptions({
+        localization: {
+          locale: LOCALE[lang],
+        },
+      });
+    }
+  }, [lang, chartCreated]);
 
   // reset the chart if them switches
   useEffect(() => {
@@ -132,6 +148,7 @@ const TradingViewChart = ({
               },
             },
             localization: {
+              locale: LOCALE[lang],
               priceFormatter: (val) => formattedNum(val, true),
             },
           })
@@ -228,7 +245,7 @@ const TradingViewChart = ({
         }
       })
     }
-  }, [t, base, baseChange, chartCreated, darkMode, formattedData, title, topScale, type, useWeekly, width])
+  }, [t, base, baseChange, chartCreated, darkMode, formattedData, title, topScale, type, useWeekly, width, lang])
 
   // responsiveness
   useEffect(() => {
