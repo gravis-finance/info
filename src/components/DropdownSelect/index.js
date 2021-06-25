@@ -49,7 +49,7 @@ const DropdownSelect = ({ options, active, setActive, color }) => {
     <Wrapper color={color}>
       <SortText active={active}>{active}</SortText>
       {Object.keys(options).map((key, index) => {
-        let option = options[key]
+        const option = options[key]
         return (
           option !== active && (
             <SortText

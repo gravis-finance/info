@@ -23,11 +23,6 @@ const WarningWrapper = styled.div`
   display: ${({ show }) => !show && 'none'};
   margin: 0 2rem 2rem 2rem;
   position: relative;
-
-  @media screen and (max-width: 800px) {
-    width: 80% !important;
-    margin-left: 5%;
-  }
 `
 
 const StyledWarningIcon = styled(AlertTriangle)`
@@ -57,58 +52,60 @@ export default function Warning({ type, show, setShow, address }) {
   )
 
   return (
-    <WarningWrapper show={show}>
-      <AutoColumn gap="4px">
-        <RowFixed>
-          <StyledWarningIcon />
-          <Text fontWeight={600} lineHeight={'145.23%'} ml={'10px'} color="#FF4D00">
-            {t('tokenSafetyAlert')}
-          </Text>
-        </RowFixed>
-        {textContent}
-        {below800 ? (
-          <div>
-            <Hover style={{ marginTop: '10px' }}>
-              <Link
-                fontWeight={500}
-                lineHeight={'145.23%'}
-                color={'#2172E5'}
-                href={getCurrentNetworkLinks().SCAN_LINK + address}
-                target="_blank"
-              >
-                {`${getCurrentNetworkLinks().SCAN_LINK_TITLE} ${
-                  type === 'token' ? t('token') : t('pair').toLowerCase()
-                }`}
-              </Link>
-            </Hover>
-            <RowBetween style={{ marginTop: '20px' }}>
-              <div />
+    <div>
+      <WarningWrapper show={show}>
+        <AutoColumn gap="4px">
+          <RowFixed>
+            <StyledWarningIcon />
+            <Text fontWeight={600} lineHeight={'145.23%'} ml={'10px'} color="#FF4D00">
+              {t('tokenSafetyAlert')}
+            </Text>
+          </RowFixed>
+          {textContent}
+          {below800 ? (
+            <div>
+              <Hover style={{ marginTop: '10px' }}>
+                <Link
+                  fontWeight={500}
+                  lineHeight={'145.23%'}
+                  color={'#2172E5'}
+                  href={getCurrentNetworkLinks().SCAN_LINK + address}
+                  target="_blank"
+                >
+                  {`${getCurrentNetworkLinks().SCAN_LINK_TITLE} ${
+                    type === 'token' ? t('token') : t('pair').toLowerCase()
+                  }`}
+                </Link>
+              </Hover>
+              <RowBetween style={{ marginTop: '20px' }}>
+                <div />
+                <ButtonDark color={'#f82d3a'} style={{ minWidth: '140px' }} onClick={() => setShow(false)}>
+                  {t('iUnderstand')}
+                </ButtonDark>
+              </RowBetween>
+            </div>
+          ) : (
+            <RowBetween style={{ marginTop: '10px' }}>
+              <Hover>
+                <Link
+                  fontWeight={500}
+                  lineHeight={'145.23%'}
+                  color={'#2172E5'}
+                  href={getCurrentNetworkLinks().SCAN_LINK + address}
+                  target="_blank"
+                >
+                  {`${getCurrentNetworkLinks().SCAN_LINK_TITLE} ${
+                    type === 'token' ? t('token') : t('pair').toLowerCase()
+                  }`}
+                </Link>
+              </Hover>
               <ButtonDark color={'#f82d3a'} style={{ minWidth: '140px' }} onClick={() => setShow(false)}>
                 {t('iUnderstand')}
               </ButtonDark>
             </RowBetween>
-          </div>
-        ) : (
-          <RowBetween style={{ marginTop: '10px' }}>
-            <Hover>
-              <Link
-                fontWeight={500}
-                lineHeight={'145.23%'}
-                color={'#2172E5'}
-                href={getCurrentNetworkLinks().SCAN_LINK + address}
-                target="_blank"
-              >
-                {`${getCurrentNetworkLinks().SCAN_LINK_TITLE} ${
-                  type === 'token' ? t('token') : t('pair').toLowerCase()
-                }`}
-              </Link>
-            </Hover>
-            <ButtonDark color={'#f82d3a'} style={{ minWidth: '140px' }} onClick={() => setShow(false)}>
-              {t('iUnderstand')}
-            </ButtonDark>
-          </RowBetween>
-        )}
-      </AutoColumn>
-    </WarningWrapper>
+          )}
+        </AutoColumn>
+      </WarningWrapper>
+    </div>
   )
 }
