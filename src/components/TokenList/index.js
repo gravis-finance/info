@@ -95,6 +95,7 @@ const ClickableText = styled(Text)`
 
   @media screen and (max-width: 640px) {
     font-size: 0.85rem;
+    white-space: initial;
   }
 `
 
@@ -107,6 +108,10 @@ const DataText = styled(Flex)`
   & > * {
     font-size: 14px;
     font-weight: 400 !important;
+  }
+
+  &:last-child {
+    justify-content: flex-end;
   }
 
   @media screen and (max-width: 600px) {
@@ -211,7 +216,7 @@ function TopTokenList({ tokens, itemMax = 10 }) {
             </DataText>
           )}
           <DataText area="liq">{formattedNum(item.totalLiquidityUSD, true)}</DataText>
-          <DataText area="vol">{formattedNum(item.oneDayVolumeUSD, true)}</DataText>
+          <DataText area="vol" >{formattedNum(item.oneDayVolumeUSD, true)}</DataText>
           {!below1080 && (
             <DataText area="price" color="text" fontWeight="400">
               {formattedNum(item.priceUSD, true)}
