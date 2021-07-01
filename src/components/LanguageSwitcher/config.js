@@ -1,4 +1,4 @@
-import { EnglishIcon, JapaneseIcon } from '../../svg'
+import { ChineseIcon, EnglishIcon, JapaneseIcon } from '../../svg'
 
 export const availableLanguages = [
   {
@@ -9,4 +9,8 @@ export const availableLanguages = [
     name: 'JP',
     icon: JapaneseIcon,
   },
+  {
+    name: 'CN',
+    icon: ChineseIcon
+  }
 ]
