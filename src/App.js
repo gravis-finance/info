@@ -19,6 +19,7 @@ import { useMedia } from 'react-use'
 import { setDefaultLanguage, setLanguage, setTranslations, useTranslation } from 'react-multi-lang'
 import en from './locales/en.json'
 import jp from './locales/jp.json'
+import cn from './locales/cn.json'
 import { setTranslationHook } from './utils/data'
 
 const GlobalPage = lazy(() => import('./pages/GlobalPage'))
@@ -145,7 +146,7 @@ const StyledSearchIcon = styled(SearchIcon)`
     stroke: #929292;
   }
 `
-setTranslations({ en, jp })
+setTranslations({ en, jp, cn })
 const localStorageLanguageItem = 'gravisApplicationsLanguage'
 const urlSearchLanguageParam = 'gravisLanguage'
 

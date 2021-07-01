@@ -35,6 +35,7 @@ export { default as ArrowDropDownIcon } from './Icons/ArrowDropDown'
 
 export { default as EnglishIcon } from './Icons/EnglishLanguage'
 export { default as JapaneseIcon } from './Icons/JapaneseLanguage'
+export { default as ChineseIcon } from './Icons/Chinese'
 
 export { default as Svg } from './Svg'
 export type { SvgProps } from './types'
