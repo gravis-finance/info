@@ -169,7 +169,7 @@ const LanguageSwitch = ({ toggleMobile = true, local }) => {
     if(params.includes('gravisLanguage'))
       window.location.search =`${params.slice(0, params.indexOf('gravisLanguage'))}gravisLanguage=${name.toLowerCase()}`
     else
-      window.location.search =`${params.slice(0, params.indexOf('gravisLanguage'))}&gravisLanguage=${name.toLowerCase()}`
+      window.location.search =`${params}&gravisLanguage=${name.toLowerCase()}`
   }
 
   const onClickHandler = (event) => {
