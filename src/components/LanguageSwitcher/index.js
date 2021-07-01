@@ -164,7 +164,9 @@ const LanguageSwitch = ({ toggleMobile = true, local }) => {
     setSelectedOption(availableLanguages.find((language) => language.name === name))
     localStorage.setItem('gravisApplicationsLanguage', name)
     setLanguage(name.toLowerCase())
-    window.location.reload()
+    let params = window.location.search;
+
+    window.location.search =`${params.slice(0, params.indexOf('gravisLanguage'))}gravisLanguage=${name.toLowerCase()}`
   }
 
   const onClickHandler = (event) => {
