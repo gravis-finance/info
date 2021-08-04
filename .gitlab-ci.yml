@@ -24,4 +24,3 @@ deploy_develop:
     when: manual
     script:
         - rsync -a ./build/* /var/www/info/build/
-	
