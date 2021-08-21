@@ -25,9 +25,9 @@ const Container = styled.div`
   height: 48px;
   z-index: 30;
   position: relative;
-  ${({ disableMargin }) => disableMargin ? 'flex-basis: 45%' : 'margin: 41px 0 35px 0'};
-  ${({ big })=> big ? 'height: 58px; flex-basis: 0%;' : ''}
-  ${({ singlePage }) => singlePage ? 'flex-basis: 90%;' : ''}
+  ${({ disableMargin }) => (disableMargin ? 'flex-basis: 45%' : 'margin: 41px 0 35px 0')};
+  ${({ big }) => (big ? 'height: 58px; flex-basis: 0%;' : '')}
+  ${({ singlePage }) => (singlePage ? 'flex-basis: 90%;' : '')}
 
   @media screen and (max-width: 600px) {
     width: 100%;
@@ -46,34 +46,36 @@ const Wrapper = styled.div`
   z-index: 9999;
   width: 100%;
   min-width: 300px;
-  
+
   background: linear-gradient(90.28deg, #292929 0%, #242424 100%);
-  border: 1px solid #2E2E2E;
+  border: 1px solid #2e2e2e;
   box-sizing: border-box;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
   border-radius: 45px;
-  
+
   transition: border-radius 200ms ease-in-out;
-  
+
   :focus-within {
-    background: linear-gradient(90.28deg, #242424 0%, #1F1F1F 100%);
+    background: linear-gradient(90.28deg, #242424 0%, #1f1f1f 100%);
     box-shadow: inset 0px -1px 0px rgba(129, 129, 129, 0.15), inset 0px 4px 25px rgba(0, 0, 0, 0.25);
     border-radius: 39px;
     border-color: transparent;
     background: #353535;
     border-radius: 6px 6px 0 0;
   }
-  
-  ${({open})=>open? 
-  `
+
+  ${({ open }) =>
+    open
+      ? `
     background: linear-gradient(90.28deg, #242424 0%, #1F1F1F 100%);
     box-shadow: inset 0px -1px 0px rgba(129, 129, 129, 0.15), inset 0px 4px 25px rgba(0, 0, 0, 0.25);
     border-radius: 39px;
     border-color: transparent;
     background: #353535;
     border-radius: 6px 6px 0 0;
-  ` : ''}
-  
+  `
+      : ''}
+
   @media screen and (max-width: 500px) {
     // background: ${({ theme }) => transparentize(0.4, theme.bg1)};
     box-shadow: ${({ open }) =>
@@ -114,15 +116,15 @@ const SearchIconLarge = styled.div`
   position: absolute;
   right: 10px;
   pointer-events: none;
-  background: #E6E6F6;
+  background: #e6e6f6;
   border-radius: 6px;
   display: flex;
   background: linear-gradient(90.28deg, #292929 0%, #242424 100%);
-  border: 1px solid #2E2E2E;
+  border: 1px solid #2e2e2e;
   box-sizing: border-box;
   box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4), -4px -4px 12px rgba(255, 255, 255, 0.05);
   border-radius: 38px;
-  
+
   > svg {
     margin: auto;
   }
@@ -152,11 +154,11 @@ const Menu = styled.div`
   padding-bottom: 20px;
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
-  
+
   background: #292929;
   box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.4), -4px -4px 20px rgba(255, 255, 255, 0.05);
   border-radius: 0 0 6px 6px;
-  
+
   display: ${({ hide }) => hide && 'none'};
 `
 
@@ -175,7 +177,7 @@ const MenuItem = styled(Row)`
 const Heading = styled(Row)`
   padding: 1rem;
   display: ${({ hide = false }) => hide && 'none'};
-  ${({disableBorder}) => disableBorder ? '' : 'border-bottom: 1px solid #353535;'}
+  ${({ disableBorder }) => (disableBorder ? '' : 'border-bottom: 1px solid #353535;')}
 `
 
 const Gray = styled.span`
@@ -183,17 +185,17 @@ const Gray = styled.span`
 `
 
 const Blue = styled.span`
-  color: #73D3FE;
+  color: #73d3fe;
   padding: 8px;
-  background: #2D4F5D;
+  background: #2d4f5d;
   border-radius: 30px;
   font-size: 12px;
   font-weight: 700;
   transition: background 200ms ease-in-out;
-  
+
   :hover {
     cursor: pointer;
-    background: #3E6C7F;
+    background: #3e6c7f;
   }
 `
 
@@ -449,33 +451,32 @@ export const Search = ({ small = false, disableMargin, big, singlePage }) => {
   const wrapperRef = useRef()
   const menuRef = useRef()
 
-  const handleClick = (e) => {
-    if (
-      !(menuRef.current && menuRef.current.contains(e.target)) &&
-      !(wrapperRef.current && wrapperRef.current.contains(e.target))
-    ) {
-      setPairsShown(3)
-      setTokensShown(3)
-      toggleMenu(false)
-    }
-  }
-
   useEffect(() => {
+    const handleClick = (e) => {
+      if (
+        !(menuRef.current && menuRef.current.contains(e.target)) &&
+        !(wrapperRef.current && wrapperRef.current.contains(e.target))
+      ) {
+        setPairsShown(3)
+        setTokensShown(3)
+        toggleMenu(false)
+      }
+    }
+
     document.addEventListener('click', handleClick)
     return () => {
       document.removeEventListener('click', handleClick)
     }
-  })
+  }, [])
 
   const t = useTranslation()
 
   return (
     <Container small={small} disableMargin={disableMargin} big={big} singlePage={singlePage}>
-      <Wrapper open={showMenu} shadow={true} small={small}>
+      <Wrapper open={showMenu} shadow={true} small={small} ref={wrapperRef}>
         <Input
           large={!small}
           type={'text'}
-          ref={wrapperRef}
           placeholder={`${t('searchPairsAndTokens')}...`}
           value={value}
           onChange={(e) => {
@@ -487,7 +488,13 @@ export const Search = ({ small = false, disableMargin, big, singlePage }) => {
             }
           }}
         />
-        {!showMenu ? <SearchIconLarge><SearchIcon width="24px" height="24px"/></SearchIconLarge> : <CloseIcon onClick={() => toggleMenu(false)} />}
+        {!showMenu ? (
+          <SearchIconLarge>
+            <SearchIcon width="24px" height="24px" />
+          </SearchIconLarge>
+        ) : (
+          <CloseIcon onClick={() => toggleMenu(false)} />
+        )}
       </Wrapper>
       <Menu hide={!showMenu} ref={menuRef}>
         <Heading>
@@ -496,7 +503,7 @@ export const Search = ({ small = false, disableMargin, big, singlePage }) => {
         <div>
           {filteredPairList && Object.keys(filteredPairList).length === 0 && (
             <MenuItem>
-              <TYPE.body style={{color: 'rgba(255, 255, 255, 0.5)'}}>{t('noResults')}</TYPE.body>
+              <TYPE.body style={{ color: 'rgba(255, 255, 255, 0.5)' }}>{t('noResults')}</TYPE.body>
             </MenuItem>
           )}
           {filteredPairList &&
@@ -533,7 +540,7 @@ export const Search = ({ small = false, disableMargin, big, singlePage }) => {
         <div>
           {Object.keys(filteredTokenList).length === 0 && (
             <MenuItem>
-              <TYPE.body style={{color: 'rgba(255, 255, 255, 0.5)'}}>{t('noResults')}</TYPE.body>
+              <TYPE.body style={{ color: 'rgba(255, 255, 255, 0.5)' }}>{t('noResults')}</TYPE.body>
             </MenuItem>
           )}
           {filteredTokenList.slice(0, tokensShown).map((token) => {

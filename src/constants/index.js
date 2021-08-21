@@ -6,9 +6,9 @@ const params = new URLSearchParams(window.location.search.toString())
 const networkName = params.get('network')
 
 export const FACTORY_ADDRESSES = {
-  binance: '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD', 
-  huobi: '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD', 
-  polygon: '0x17c1D25D5a2d833c266639De5Fbe8896bDBeB234' 
+  binance: '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD',
+  huobi: '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD',
+  polygon: '0x17c1D25D5a2d833c266639De5Fbe8896bDBeB234'
 }
 
 export const FACTORY_ADDRESS = FACTORY_ADDRESSES[networkName]
@@ -58,7 +58,6 @@ export const FEE_WARNING_TOKENS = ['0xd46ba6d942050d489dbd938a2c909a5d5039a161']
 
 // export const CLIENT_APOLLO_LINK = window.location.search.network === 'huobi'
 
-
 export const networks = [
   {
     title: 'huobi',
@@ -78,12 +77,19 @@ export const networks = [
       TOKENS_URL: (tokenAddress) => {
         // return `https://mdex.com/token-icons/heco/${tokenAddress}.png`
         // return console.log(hecoTokensConfig.tokens.find(token => token.address === tokenAddress))
-        if(tokenAddress)
-          return `${hecoTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI.includes('http')
-          ? hecoTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI
-          : window.location.origin + hecoTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI}`
+        if (tokenAddress)
+          return `${
+            hecoTokensConfig.tokens
+              .find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+              ?.logoURI.includes('http')
+              ? hecoTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+                  ?.logoURI
+              : window.location.origin +
+                hecoTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+                  ?.logoURI
+          }`
       },
-    }
+    },
   },
   {
     title: 'binance',
@@ -103,11 +109,11 @@ export const networks = [
       TOKENS_URL: (tokenName) => {
         return `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/smartchain/assets/${tokenName}/logo.png`
       },
-    }
+    },
   },
   {
     title: 'polygon',
-    label: 'MATIC',
+    label: 'Polygon',
     icon: PolygonIcon,
     links: {
       CLIENT_APOLLO_LINK: 'https://api.thegraph.com/subgraphs/name/darth-crypto/gravis-finance',
@@ -121,11 +127,33 @@ export const networks = [
       TOKEN_TITLE: 'MATIC',
       SCAN_LINK_TITLE: 'viewOnPolygonScan',
       TOKENS_URL: (tokenAddress) => {
-        if(tokenAddress)
-          return `${polygonTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI.includes('http')
-          ? polygonTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI
-          : window.location.origin + polygonTokensConfig.tokens.find(token => token.address.toLowerCase() === tokenAddress.toLowerCase())?.logoURI}`
+        if (tokenAddress)
+          return `${
+            polygonTokensConfig.tokens
+              .find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+              ?.logoURI.includes('http')
+              ? polygonTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+                  ?.logoURI
+              : window.location.origin +
+                polygonTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+                  ?.logoURI
+          }`
       },
-    }
+    },
+  },
+]
+
+export const comparedNetworksIds = [
+  {
+    name: "huobi",
+    networks: [128, 256],
+  },
+  {
+    name: "binance",
+    networks: [56, 97],
+  },
+  {
+    name: "polygon",
+    networks: [137, 80001],
   }
 ]

@@ -19,6 +19,7 @@ import { useMedia } from 'react-use'
 import { setDefaultLanguage, setLanguage, setTranslations, useTranslation } from 'react-multi-lang'
 import en from './locales/en.json'
 import jp from './locales/jp.json'
+import cn from './locales/cn.json'
 import { setTranslationHook } from './utils/data'
 
 const GlobalPage = lazy(() => import('./pages/GlobalPage'))
@@ -145,12 +146,12 @@ const StyledSearchIcon = styled(SearchIcon)`
     stroke: #929292;
   }
 `
-setTranslations({en, jp})
+setTranslations({ en, jp, cn })
 const localStorageLanguageItem = 'gravisApplicationsLanguage'
 const urlSearchLanguageParam = 'gravisLanguage'
 
 const getDefaultLanguage = () => {
-  if(localStorage.getItem(localStorageLanguageItem))
+  if (localStorage.getItem(localStorageLanguageItem))
     return localStorage.getItem(localStorageLanguageItem)?.toLowerCase()
   if (navigator.language) {
     if (navigator.language.includes('en')) {
@@ -161,18 +162,17 @@ const getDefaultLanguage = () => {
       localStorage.setItem(localStorageLanguageItem, 'JP')
       return 'jp'
     }
-  }
-  else {
+  } else {
     localStorage.setItem(localStorageLanguageItem, 'EN')
     return 'en'
   }
 }
 
 const getLanguageSearchParam = () => {
-  const {search} = window.location
-  if(search.includes(urlSearchLanguageParam)) {
-    const language = search.slice(search.indexOf(urlSearchLanguageParam)+urlSearchLanguageParam.length+1)
-    if(language.toLowerCase() === 'jp' || language.toLowerCase() === 'en') {
+  const { search } = window.location
+  if (search.includes(urlSearchLanguageParam)) {
+    const language = search.slice(search.indexOf(urlSearchLanguageParam) + urlSearchLanguageParam.length + 1)
+    if (language.toLowerCase() === 'jp' || language.toLowerCase() === 'en') {
       localStorage.setItem(localStorageLanguageItem, language.toUpperCase())
       return language.toLowerCase()
     }
@@ -226,10 +226,9 @@ function App() {
 
   useEffect(() => {
     if (!window.location.search) window.location.search = 'network=huobi'
-    if(localStorage.getItem('gravisApplicationsLanguage'))
+    if (localStorage.getItem('gravisApplicationsLanguage'))
       setLanguage(localStorage.getItem('gravisApplicationsLanguage')?.toLocaleLowerCase())
-    else
-      setLanguage('en')
+    else setLanguage('en')
   }, [])
 
   return (

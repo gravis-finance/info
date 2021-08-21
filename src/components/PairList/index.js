@@ -95,6 +95,7 @@ const ClickableText = styled(Text)`
 
   @media screen and (max-width: 640px) {
     font-size: 0.85rem;
+    white-space: initial;
   }
 `
 
@@ -107,6 +108,10 @@ const DataText = styled(Flex)`
   & > * {
     font-size: 14px;
     font-weight: 400 !important;
+  }
+
+  &:last-child {
+    justify-content: flex-end;
   }
 
   @media screen and (max-width: 600px) {
@@ -130,7 +135,7 @@ const FIELD_TO_VALUE = {
 }
 
 function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
-  const below600 = useMedia('(max-width: 600px)')
+  const below680 = useMedia('(max-width: 680px)')
   const below740 = useMedia('(max-width: 740px)')
   const below1080 = useMedia('(max-width: 1080px)')
 
@@ -176,9 +181,9 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
             focus={true}
           >
             <DataText area="name" fontWeight="500">
-              {!below600 && <div style={{ marginRight: '20px', width: '10px' }}>{index}</div>}
+              {!below680 && <div style={{ marginRight: '20px', width: '10px' }}>{index}</div>}
               <DoubleTokenLogo
-                size={below600 ? 16 : 20}
+                size={below680 ? 16 : 20}
                 a0={pairData.token0.id}
                 a1={pairData.token1.id}
                 margin={!below740}
@@ -190,7 +195,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
               >
                 <FormattedName
                   text={pairData.token0.symbol + '-' + pairData.token1.symbol}
-                  maxCharacters={below600 ? 8 : 16}
+                  maxCharacters={below680 ? 8 : 16}
                   adjustSize={true}
                   link={true}
                   style={{ fontWeight: '500' }}
@@ -212,7 +217,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
         return ''
       }
     },
-    [below1080, below600, below740, color, disbaleLinks, pairs]
+    [below1080, below680, below740, color, disbaleLinks, pairs]
   )
 
   const pairList = useMemo(
@@ -242,7 +247,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
             )
           )
         }),
-    [ITEMS_PER_PAGE, page, pairs, sortDirection, sortedColumn]
+    [ITEMS_PER_PAGE, page, pairs, sortDirection, sortedColumn, ListItem] // eslint-disable-line
   )
 
   return (
@@ -278,7 +283,7 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
               setSortDirection(sortedColumn !== SORT_FIELD.VOL ? true : !sortDirection)
             }}
           >
-            {t('volume24hrs')} <SortDirection found={sortedColumn === SORT_FIELD.VOL} sortDirection={sortDirection} />
+            {t('volume24hrs')} {sortedColumn === SORT_FIELD.VOL && <SortDirection found={sortedColumn === SORT_FIELD.VOL} sortDirection={sortDirection} />}
           </ClickableText>
         </Flex>
         {!below1080 && (
@@ -290,7 +295,8 @@ function PairList({ pairs, color, disbaleLinks, maxItems = 10 }) {
                 setSortDirection(sortedColumn !== SORT_FIELD.VOL_7DAYS ? true : !sortDirection)
               }}
             >
-              {t('volume7D')} <SortDirection found={sortedColumn === SORT_FIELD.VOL_7DAYS} sortDirection={sortDirection} />
+              {t('volume7D')}{' '}
+              <SortDirection found={sortedColumn === SORT_FIELD.VOL_7DAYS} sortDirection={sortDirection} />
             </ClickableText>
           </Flex>
         )}

@@ -12,7 +12,7 @@ import LocalLoader from '../LocalLoader'
 import { Box, Flex, Text } from 'rebass'
 import Link from '../Link'
 import { Divider, EmptyCard } from '..'
-import DropdownSelect from '../DropdownSelect'
+import { Select } from '../Select'
 import FormattedName from '../FormattedName'
 import { TYPE } from '../../Theme'
 import { getCurrentNetworkLinks, updateNameData } from '../../utils/data'
@@ -29,9 +29,6 @@ const List = styled(Box)`
 
 const DashGrid = styled.div`
   display: grid;
-  grid-gap: 1em;
-  grid-template-columns: 100px 1fr 1fr;
-  grid-template-areas: 'name liq vol';
 
   ${(props) =>
     props.isHeader
@@ -68,7 +65,12 @@ const DashGrid = styled.div`
     }
   }
 
-  display: grid;
+  @media (max-width: 680px) {
+    grid-gap: 1em;
+    grid-template-columns: 100px 1fr 1fr;
+    grid-template-areas: 'name liq vol';
+  }
+
   grid-gap: 0.5em;
   grid-template-rows: 14px;
   grid-template-columns: 1.75fr 1fr 1fr 1fr 0.6fr 1fr;
@@ -158,11 +160,11 @@ function getTransactionType(event, symbol0, symbol1, t) {
   const formattedS1 = symbol1?.length > 8 ? symbol1.slice(0, 7) + '...' : symbol1
   switch (event) {
     case TXN_TYPE.ADD:
-      return t('addAnd', { inputAmount: formattedS0, outputAmount: formattedS1})
+      return t('addAnd', { inputAmount: formattedS0, outputAmount: formattedS1 })
     case TXN_TYPE.REMOVE:
-      return t('removeTransaction', { transactionA: formattedS0, transactionB: formattedS1})
+      return t('removeTransaction', { transactionA: formattedS0, transactionB: formattedS1 })
     case TXN_TYPE.SWAP:
-      return t('swapFor', { inputAmount: formattedS0, outputAmount: formattedS1})
+      return t('swapFor', { inputAmount: formattedS0, outputAmount: formattedS1 })
     default:
       return ''
   }
@@ -336,7 +338,13 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
       <DashGrid center={true} style={{ height: 'fit-content' }} isHeader>
         {below780 ? (
           <RowBetween area="txn">
-            <DropdownSelect options={TXN_TYPE} active={txFilter} setActive={setTxFilter} color={color} />
+            <Select value={txFilter} onChange={({ target }) => setTxFilter(target.value)} fullWidth>
+              {Object.keys(TXN_TYPE).map((filterKey) => (
+                <option key={filterKey} value={TXN_TYPE[filterKey]}>
+                  {TXN_TYPE[filterKey]}
+                </option>
+              ))}
+            </Select>
           </RowBetween>
         ) : (
           <RowFixed area="txn" gap="10px" pl={4}>
@@ -413,7 +421,7 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
                   setSortDirection(sortedColumn !== SORT_FIELD.AMOUNT1 ? true : !sortDirection)
                 }}
               >
-                {symbol1Override ? symbol1Override +  ` ${t('amount')}` : `${t('tokenAmount')}`}{' '}
+                {symbol1Override ? symbol1Override + ` ${t('amount')}` : `${t('tokenAmount')}`}{' '}
                 <SortDirection found={sortedColumn === SORT_FIELD.AMOUNT1} sortDirection={sortDirection} />
               </ClickableText>
             </Flex>
@@ -437,7 +445,8 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
                 setSortDirection(sortedColumn !== SORT_FIELD.TIMESTAMP ? true : !sortDirection)
               }}
             >
-              {t('time.time')} <SortDirection found={sortedColumn === SORT_FIELD.TIMESTAMP} sortDirection={sortDirection} />
+              {t('time.time')}{' '}
+              <SortDirection found={sortedColumn === SORT_FIELD.TIMESTAMP} sortDirection={sortDirection} />
             </ClickableText>
           </Flex>
         </>

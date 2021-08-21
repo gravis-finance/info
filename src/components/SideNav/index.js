@@ -12,6 +12,7 @@ import Link from '../Link'
 import { HomeIcon, PairsIcon, SidebarCloseIcon, TokensIcon, TrendingIcon } from '../../svg'
 import { LinksContainer } from '../LinksContainer'
 import { useTranslation } from 'react-multi-lang'
+import { getCurrentNetworkName, getNetworkForAnalytics } from '../../utils'
 // import { useDarkModeManager } from '../../contexts/LocalStorage'
 // import Toggle from '../Toggle'
 
@@ -234,7 +235,11 @@ function SideNav({ setIsPushedState, isPushed }) {
                 {!isPushed ? t('mainMenu.analytics.pairs') : ''}
               </Option>
             </BasicLink>
-            <Link external href={`${process.env.REACT_APP_GRAVIS_SWAP_URL}?gravisLanguage=${t('language')}`} isPushed={isPushed}>
+            <Link
+              external
+              href={`${process.env.REACT_APP_GRAVIS_SWAP_URL}/swap?network=${getNetworkForAnalytics(getCurrentNetworkName())}&gravisLanguage=${t('language')}`}
+              isPushed={isPushed}
+            >
               <Option
                 activeText={
                   (history.location.pathname.split('/')[1] === '' || history.location.pathname.split('/')[1] === '') ??

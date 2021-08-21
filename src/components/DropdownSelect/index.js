@@ -31,13 +31,13 @@ const SortText = styled.button`
   font-weight: 700;
 
   ${({ active }) =>
-  active
-    ? `background: #009CE1;
+    active
+      ? `background: #009CE1;
   border-radius: 21px;
   padding: 8px 10px;
   color: white;
   `
-    : ''}
+      : ''}
 
   @media screen and (max-width: 600px) {
     font-size: 14px;
@@ -45,12 +45,11 @@ const SortText = styled.button`
 `
 
 const DropdownSelect = ({ options, active, setActive, color }) => {
-
   return (
     <Wrapper color={color}>
       <SortText active={active}>{active}</SortText>
       {Object.keys(options).map((key, index) => {
-        let option = options[key]
+        const option = options[key]
         return (
           option !== active && (
             <SortText
