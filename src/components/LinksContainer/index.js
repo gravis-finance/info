@@ -41,12 +41,12 @@ const LinksContainer = () => {
           <GitHubIcon />
         </StyledLink>
         <StyledLink
-          href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/gravis_finance'}`}
+          href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/gravisfinance'}`}
           target={'_blank'}
         >
           <TelegramIcon />
         </StyledLink>
-        <StyledLink href="https://twitter.com/gravis_finance" target={'_blank'}>
+        <StyledLink href="https://twitter.com/gammarosigma" target={'_blank'}>
           <TwitterIcon />
         </StyledLink>
         <StyledLink href="https://gravis-finance.medium.com" target={'_blank'}>

@@ -451,33 +451,32 @@ export const Search = ({ small = false, disableMargin, big, singlePage }) => {
   const wrapperRef = useRef()
   const menuRef = useRef()
 
-  const handleClick = (e) => {
-    if (
-      !(menuRef.current && menuRef.current.contains(e.target)) &&
-      !(wrapperRef.current && wrapperRef.current.contains(e.target))
-    ) {
-      setPairsShown(3)
-      setTokensShown(3)
-      toggleMenu(false)
-    }
-  }
-
   useEffect(() => {
+    const handleClick = (e) => {
+      if (
+        !(menuRef.current && menuRef.current.contains(e.target)) &&
+        !(wrapperRef.current && wrapperRef.current.contains(e.target))
+      ) {
+        setPairsShown(3)
+        setTokensShown(3)
+        toggleMenu(false)
+      }
+    }
+
     document.addEventListener('click', handleClick)
     return () => {
       document.removeEventListener('click', handleClick)
     }
-  })
+  }, [])
 
   const t = useTranslation()
 
   return (
     <Container small={small} disableMargin={disableMargin} big={big} singlePage={singlePage}>
-      <Wrapper open={showMenu} shadow={true} small={small}>
+      <Wrapper open={showMenu} shadow={true} small={small} ref={wrapperRef}>
         <Input
           large={!small}
           type={'text'}
-          ref={wrapperRef}
           placeholder={`${t('searchPairsAndTokens')}...`}
           value={value}
           onChange={(e) => {

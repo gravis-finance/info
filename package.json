@@ -64,6 +64,8 @@
     "wcag-contrast": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.14.5",
+    "babel-plugin-parse-translation": "^1.0.2",
     "prettier": "^2.2.1",
     "webpack-bundle-analyzer": "^4.4.2"
   },
@@ -81,7 +83,8 @@
     "check:lint": "yarn lint",
     "check:format": "yarn format --check",
     "check:all": "yarn check:lint && yarn check:format",
-    "analyze": "node ./scripts/bundle-analyze"
+    "analyze": "node ./scripts/bundle-analyze",
+    "locales": "babel --config-file ./babel-locales.config.js ./src"
   },
   "eslintConfig": {
     "extends": "react-app"

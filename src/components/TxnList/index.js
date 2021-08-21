@@ -12,7 +12,7 @@ import LocalLoader from '../LocalLoader'
 import { Box, Flex, Text } from 'rebass'
 import Link from '../Link'
 import { Divider, EmptyCard } from '..'
-import DropdownSelect from '../DropdownSelect'
+import { Select } from '../Select'
 import FormattedName from '../FormattedName'
 import { TYPE } from '../../Theme'
 import { getCurrentNetworkLinks, updateNameData } from '../../utils/data'
@@ -29,9 +29,6 @@ const List = styled(Box)`
 
 const DashGrid = styled.div`
   display: grid;
-  grid-gap: 1em;
-  grid-template-columns: 100px 1fr 1fr;
-  grid-template-areas: 'name liq vol';
 
   ${(props) =>
     props.isHeader
@@ -68,7 +65,12 @@ const DashGrid = styled.div`
     }
   }
 
-  display: grid;
+  @media (max-width: 680px) {
+    grid-gap: 1em;
+    grid-template-columns: 100px 1fr 1fr;
+    grid-template-areas: 'name liq vol';
+  }
+
   grid-gap: 0.5em;
   grid-template-rows: 14px;
   grid-template-columns: 1.75fr 1fr 1fr 1fr 0.6fr 1fr;
@@ -336,7 +338,13 @@ function TxnList({ transactions, symbol0Override, symbol1Override, color }) {
       <DashGrid center={true} style={{ height: 'fit-content' }} isHeader>
         {below780 ? (
           <RowBetween area="txn">
-            <DropdownSelect options={TXN_TYPE} active={txFilter} setActive={setTxFilter} color={color} />
+            <Select value={txFilter} onChange={({ target }) => setTxFilter(target.value)} fullWidth>
+              {Object.keys(TXN_TYPE).map((filterKey) => (
+                <option key={filterKey} value={TXN_TYPE[filterKey]}>
+                  {TXN_TYPE[filterKey]}
+                </option>
+              ))}
+            </Select>
           </RowBetween>
         ) : (
           <RowFixed area="txn" gap="10px" pl={4}>
