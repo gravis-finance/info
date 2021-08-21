@@ -10,7 +10,7 @@ build:
     script:
         - yarn global add dotenv-cli
         - yarn install
-        - yarn build:dev
+        - yarn build
     artifacts:
         expire_in: 1 week
         paths:
@@ -19,7 +19,8 @@ deploy_develop:
     stage: deploy
     tags: 
       - shell
-      - dev
+      - prod
       - deploy-runner
+    when: manual
     script:
-        - rsync -a ./build/* /var/www/alium-info
+        - rsync -a ./build/* /var/www/info/build/
