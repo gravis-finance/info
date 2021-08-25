@@ -225,7 +225,7 @@ function App() {
   const showWarning = headBlock && latestBlock ? headBlock - latestBlock > BLOCK_DIFFERENCE_THRESHOLD : false
 
   useEffect(() => {
-    if (!window.location.search) window.location.search = 'network=huobi'
+    if (!window.location.search) window.location.search = 'network=polygon'
     if (localStorage.getItem('gravisApplicationsLanguage'))
       setLanguage(localStorage.getItem('gravisApplicationsLanguage')?.toLocaleLowerCase())
     else setLanguage('en')
