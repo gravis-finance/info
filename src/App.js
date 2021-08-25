@@ -230,7 +230,7 @@ function App() {
     if (localStorage.getItem('gravisApplicationsLanguage'))
       setLanguage(localStorage.getItem('gravisApplicationsLanguage')?.toLocaleLowerCase())
     else setLanguage('en')
-  }, [window.location.search])
+  }, [])
 
   return (
     <ApolloProvider client={client}>
