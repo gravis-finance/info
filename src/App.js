@@ -225,11 +225,12 @@ function App() {
   const showWarning = headBlock && latestBlock ? headBlock - latestBlock > BLOCK_DIFFERENCE_THRESHOLD : false
 
   useEffect(() => {
-    if (!window.location.search) window.location.search = 'network=polygon'
+    console.log(window.location.search)
+    if (!window.location.search || window.location.search !== '?network=polygon') window.location.search = '?network=polygon'
     if (localStorage.getItem('gravisApplicationsLanguage'))
       setLanguage(localStorage.getItem('gravisApplicationsLanguage')?.toLocaleLowerCase())
     else setLanguage('en')
-  }, [])
+  }, [window.location.search])
 
   return (
     <ApolloProvider client={client}>
