@@ -465,13 +465,11 @@ export function isEquivalent(a, b) {
 
 export const getNetworkForAnalytics = (networkName) => {
   let networkChainId = ''
-  console.log({networkName})
 
   comparedNetworksIds.find((network)=> {
     if(network.name === networkName) {
       networkChainId = network.networks[process.env.REACT_APP_NODE_ENV === 'development' ? 1 : 0]
     }
-    console.log({networkChainId})
     return null
   })
   return networkChainId
@@ -479,5 +477,6 @@ export const getNetworkForAnalytics = (networkName) => {
 
 export const getCurrentNetworkName = () => {
   const params = new URLSearchParams(window.location.search.toString())
+  console.log({params})
   return params.get('network')
 }

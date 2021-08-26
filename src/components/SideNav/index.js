@@ -193,6 +193,13 @@ function SideNav({ setIsPushedState, isPushed }) {
     setIsPushedState(!isPushed)
   }
 
+  const changeNetworkHandler = () => {
+    const params = new URLSearchParams(window.location.search.toString())
+    if (params.get('network') !== 'polygon') {
+      params.set('network', 'polygon')
+    }
+  }
+
   const t = useTranslation()
 
   return (
@@ -204,14 +211,16 @@ function SideNav({ setIsPushedState, isPushed }) {
         <AutoColumn gap="1rem">
           <Title isPushed={isPushed} />
           <StyledAutoColumn gap="8px" isPushed={isPushed}>
-            <BasicLink to={`/home${window.location.search}&network=polygon`} isPushed={isPushed}>
+            <BasicLink to={`/home${window.location.search}`} isPushed={isPushed}>
+              {changeNetworkHandler()}
               <Option activeText={history.location.pathname === '/home' ?? undefined}>
                 {/*<TrendingUp size={20} style={{ marginRight: '.75rem' }} />*/}
                 <TrendingIcon style={{ marginRight: '16px' }} width="24px" />
                 {!isPushed ? t('mainMenu.analytics.overview') : ''}
               </Option>
             </BasicLink>
-            <BasicLink to={`/tokens${window.location.search}&network=polygon`} isPushed={isPushed}>
+            <BasicLink to={`/tokens${window.location.search}`} isPushed={isPushed}>
+              {changeNetworkHandler()}
               <Option
                 activeText={
                   (history.location.pathname.split('/')[1] === 'tokens' ||
@@ -223,7 +232,8 @@ function SideNav({ setIsPushedState, isPushed }) {
                 {!isPushed ? t('mainMenu.analytics.tokens') : ''}
               </Option>
             </BasicLink>
-            <BasicLink to={`/pairs${window.location.search}&network=polygon`} isPushed={isPushed}>
+            <BasicLink to={`/pairs${window.location.search}`} isPushed={isPushed}>
+              {changeNetworkHandler()}
               <Option
                 activeText={
                   (history.location.pathname.split('/')[1] === 'pairs' ||
