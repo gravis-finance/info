@@ -2,9 +2,8 @@ import { BinanceIcon, HuobiIcon, PolygonIcon } from '../svg'
 import hecoTokensConfig from '../config/tokens/heco.json'
 import polygonTokensConfig from '../config/tokens/matic.json'
 
-// const params = new URLSearchParams(window.location.search.toString())
-const networkName = 'polygon'
-
+const params = new URLSearchParams(window.location.search.toString())
+const networkName = params.get('network')
 
 export const FACTORY_ADDRESSES = {
   binance: '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD',
