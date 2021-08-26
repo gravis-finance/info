@@ -7,7 +7,7 @@ const networkName = params.get('network')
 
 export const FACTORY_ADDRESSES = {
   binance: '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD',
-  huobi: '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD',
+  huobi:   '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD',
   polygon: '0x17c1D25D5a2d833c266639De5Fbe8896bDBeB234'
 }
 
