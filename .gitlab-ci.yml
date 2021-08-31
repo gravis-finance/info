@@ -15,7 +15,7 @@ build:
         expire_in: 1 week
         paths:
             - build
-deploy_develop:
+deploy_prod:
     stage: deploy
     tags:
       - shell
