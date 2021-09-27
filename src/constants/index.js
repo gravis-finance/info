@@ -116,7 +116,7 @@ export const networks = [
     label: 'Polygon',
     icon: PolygonIcon,
     links: {
-      CLIENT_APOLLO_LINK: 'https://api.thegraph.com/subgraphs/name/darth-crypto/gravis-finance',
+      CLIENT_APOLLO_LINK: 'https://api.studio.thegraph.com/query/10086/chkbsc/v0.2.0',
       HEALTH_CLIENT_LINK: 'https://api.thegraph.com/index-node/graphql',
       BLOCK_CLIENT_LINK: 'https://api.thegraph.com/subgraphs/name/sameepsi/maticblocks',
       SUBGRAPH_NAME: 'darth-crypto/gravis-finance',
