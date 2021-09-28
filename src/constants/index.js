@@ -99,7 +99,7 @@ export const networks = [
     links: {
       // CLIENT_APOLLO_LINK: 'https://api.studio.thegraph.com/query/10086/chkbsc/v0.2.0',
       CLIENT_APOLLO_LINK: 'https://api.thegraph.com/subgraphs/name/vkolerts/bsc',
-      HEALTH_CLIENT_LINK: 'https://api.bscgraph.org/graphql',
+      HEALTH_CLIENT_LINK: 'https://api.thegraph.com/index-node/graphql',
       BLOCK_CLIENT_LINK: 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks',
       SUBGRAPH_NAME: 'vkolerts/bsc',
       SCAN_LINK: `${process.env.REACT_APP_BSC_SCAN_LINK}/address/`,
