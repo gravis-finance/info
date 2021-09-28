@@ -66,7 +66,7 @@ export const networks = [
     links: {
       CLIENT_APOLLO_LINK: 'https://q.hg.network/subgraphs/name/gravis/heco',
       HEALTH_CLIENT_LINK: 'https://h.hg.network/graphql',
-      BLOCK_CLIENT_LINK: 'https://q.hg.network/subgraphs/name/kdex-heco-blocks',
+      BLOCK_CLIENT_LINK: 'https://n10.hg.network/subgraphs/name/makiblocks/heco',
       SUBGRAPH_NAME: 'gravis/heco',
       SCAN_LINK: `${process.env.REACT_APP_HECO_INFO_LINK}/address/`,
       SCAN_LINK_TX: `${process.env.REACT_APP_HECO_INFO_LINK}/tx/`,
