@@ -7,7 +7,7 @@ const networkName = params.get('network')
 
 export const FACTORY_ADDRESSES = {
   binance: '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD',
-  huobi: '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD',
+  huobi:   '0x4a3B76860C1b76f0403025485DE7bfa1F08C48fD',
   polygon: '0x17c1D25D5a2d833c266639De5Fbe8896bDBeB234'
 }
 
@@ -66,7 +66,8 @@ export const networks = [
     links: {
       CLIENT_APOLLO_LINK: 'https://q.hg.network/subgraphs/name/gravis/heco',
       HEALTH_CLIENT_LINK: 'https://h.hg.network/graphql',
-      BLOCK_CLIENT_LINK: 'https://q.hg.network/subgraphs/name/kdex-heco-blocks',
+      BLOCK_CLIENT_LINK: 'https://n10.hg.network/subgraphs/name/makiblocks/heco',
+      // BLOCK_CLIENT_LINK: 'https://heco-graph.sashimi.cool/subgraphs/name/blocklytics/ethereum-blocks', // reserve
       SUBGRAPH_NAME: 'gravis/heco',
       SCAN_LINK: `${process.env.REACT_APP_HECO_INFO_LINK}/address/`,
       SCAN_LINK_TX: `${process.env.REACT_APP_HECO_INFO_LINK}/tx/`,
@@ -96,10 +97,11 @@ export const networks = [
     label: 'BSC',
     icon: BinanceIcon,
     links: {
-      CLIENT_APOLLO_LINK: 'https://api.bscgraph.org/subgraphs/name/gswap',
-      HEALTH_CLIENT_LINK: 'https://api.bscgraph.org/graphql',
-      BLOCK_CLIENT_LINK: 'https://api.bscgraph.org/subgraphs/name/bsc-blocks',
-      SUBGRAPH_NAME: 'gswap',
+      // CLIENT_APOLLO_LINK: 'https://api.studio.thegraph.com/query/10086/chkbsc/v0.2.0',
+      CLIENT_APOLLO_LINK: 'https://api.thegraph.com/subgraphs/name/vkolerts/bsc',
+      HEALTH_CLIENT_LINK: 'https://api.thegraph.com/index-node/graphql',
+      BLOCK_CLIENT_LINK: 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks',
+      SUBGRAPH_NAME: 'vkolerts/bsc',
       SCAN_LINK: `${process.env.REACT_APP_BSC_SCAN_LINK}/address/`,
       SCAN_LINK_TX: `${process.env.REACT_APP_BSC_SCAN_LINK}/tx/`,
       SCAN_LINK_TOKEN: `${process.env.REACT_APP_BSC_SCAN_LINK}/token/`,

@@ -61,9 +61,9 @@ export function getCurrentNetworkLinks() {
     return networks[networks.findIndex((network) => network.title === networkName)].links
   } else {
     if (t)
-      networks[networks.findIndex((network) => network.title === 'huobi')].links.SCAN_LINK_TITLE = t(
-        networks[networks.findIndex((network) => network.title === 'huobi')].links.SCAN_LINK_TITLE
+      networks[networks.findIndex((network) => network.title === 'polygon')].links.SCAN_LINK_TITLE = t(
+        networks[networks.findIndex((network) => network.title === 'polygon')].links.SCAN_LINK_TITLE
       )
-    return networks[networks.findIndex((network) => network.title === 'huobi')].links
+    return networks[networks.findIndex((network) => network.title === 'polygon')].links
   }
 }
