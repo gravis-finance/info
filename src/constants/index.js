@@ -67,6 +67,7 @@ export const networks = [
       CLIENT_APOLLO_LINK: 'https://q.hg.network/subgraphs/name/gravis/heco',
       HEALTH_CLIENT_LINK: 'https://h.hg.network/graphql',
       BLOCK_CLIENT_LINK: 'https://n10.hg.network/subgraphs/name/makiblocks/heco',
+      // BLOCK_CLIENT_LINK: 'https://heco-graph.sashimi.cool/subgraphs/name/blocklytics/ethereum-blocks', // reserve
       SUBGRAPH_NAME: 'gravis/heco',
       SCAN_LINK: `${process.env.REACT_APP_HECO_INFO_LINK}/address/`,
       SCAN_LINK_TX: `${process.env.REACT_APP_HECO_INFO_LINK}/tx/`,
@@ -96,10 +97,11 @@ export const networks = [
     label: 'BSC',
     icon: BinanceIcon,
     links: {
-      CLIENT_APOLLO_LINK: 'https://api.studio.thegraph.com/query/10086/chkbsc/v0.2.0',
+      // CLIENT_APOLLO_LINK: 'https://api.studio.thegraph.com/query/10086/chkbsc/v0.2.0',
+      CLIENT_APOLLO_LINK: 'https://api.thegraph.com/subgraphs/name/vkolerts/bsc',
       HEALTH_CLIENT_LINK: 'https://api.bscgraph.org/graphql',
       BLOCK_CLIENT_LINK: 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks',
-      SUBGRAPH_NAME: 'gswap',
+      SUBGRAPH_NAME: 'vkolerts/bsc',
       SCAN_LINK: `${process.env.REACT_APP_BSC_SCAN_LINK}/address/`,
       SCAN_LINK_TX: `${process.env.REACT_APP_BSC_SCAN_LINK}/tx/`,
       SCAN_LINK_TOKEN: `${process.env.REACT_APP_BSC_SCAN_LINK}/token/`,
