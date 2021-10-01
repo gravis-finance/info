@@ -1,12 +1,11 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { ApolloProvider } from 'react-apollo'
 import { client } from './apollo/client'
-import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom'
-import { isAddress } from './utils'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
+import { getCurrentNetworkName, isAddress } from './utils'
 // import AccountPage from './pages/AccountPage'
 // import PinnedData from './components/PinnedData'
-
 import SideNav from './components/SideNav'
 // import AccountLookup from './pages/AccountLookup'
 import { OVERVIEW_TOKEN_BLACKLIST, PAIR_BLACKLIST } from './constants'
@@ -237,7 +236,7 @@ function App() {
         {showWarning && (
           <WarningWrapper>
             <WarningBanner>
-              {`Warning: The data on this site has only synced to Binance Smart Chain block ${latestBlock} (out of ${headBlock}). Please check back soon.`}
+              {`Warning: The data on this site has only synced to ${getCurrentNetworkName() === 'polygon' ? 'Polygon Chain' : 'Binance Smart Chain'} block ${latestBlock} (out of ${headBlock}). Please check back soon.`}
             </WarningBanner>
           </WarningWrapper>
         )}
