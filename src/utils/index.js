@@ -477,6 +477,5 @@ export const getNetworkForAnalytics = (networkName) => {
 
 export const getCurrentNetworkName = () => {
   const params = new URLSearchParams(window.location.search.toString())
-  console.log({params})
   return params.get('network')
 }

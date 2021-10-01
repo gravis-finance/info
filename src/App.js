@@ -1,12 +1,11 @@
-import React, { useEffect, useState, lazy, Suspense } from 'react'
+import React, { lazy, Suspense, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { ApolloProvider } from 'react-apollo'
 import { client } from './apollo/client'
-import { Route, Switch, BrowserRouter, Redirect } from 'react-router-dom'
-import { isAddress } from './utils'
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom'
+import { getCurrentNetworkName, isAddress } from './utils'
 // import AccountPage from './pages/AccountPage'
 // import PinnedData from './components/PinnedData'
-
 import SideNav from './components/SideNav'
 // import AccountLookup from './pages/AccountLookup'
 import { OVERVIEW_TOKEN_BLACKLIST, PAIR_BLACKLIST } from './constants'
@@ -231,13 +230,24 @@ function App() {
     else setLanguage('en')
   }, [])
 
+  const getChainFullName = () => {
+    switch (getCurrentNetworkName()) {
+      case 'polygon':
+        return 'Polygon Chain'
+      case 'huobi':
+        return 'Huobi ECO Chain'
+      default:
+        return 'Binance Smart Chain'
+    }
+  }
+
   return (
     <ApolloProvider client={client}>
       <AppWrapper>
         {showWarning && (
           <WarningWrapper>
             <WarningBanner>
-              {`Warning: The data on this site has only synced to Binance Smart Chain block ${latestBlock} (out of ${headBlock}). Please check back soon.`}
+              {`Warning: The data on this site has only synced to ${getChainFullName()} block ${latestBlock} (out of ${headBlock}). Please check back soon.`}
             </WarningBanner>
           </WarningWrapper>
         )}
