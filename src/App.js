@@ -230,13 +230,24 @@ function App() {
     else setLanguage('en')
   }, [])
 
+  const getChainFullName = () => {
+    switch (getCurrentNetworkName()) {
+      case 'polygon':
+        return 'Polygon Chain'
+      case 'huobi':
+        return 'Huobi ECO Chain'
+      default:
+        return 'Binance Smart Chain'
+    }
+  }
+
   return (
     <ApolloProvider client={client}>
       <AppWrapper>
         {showWarning && (
           <WarningWrapper>
             <WarningBanner>
-              {`Warning: The data on this site has only synced to ${getCurrentNetworkName() === 'polygon' ? 'Polygon Chain' : 'Binance Smart Chain'} block ${latestBlock} (out of ${headBlock}). Please check back soon.`}
+              {`Warning: The data on this site has only synced to ${getChainFullName()} block ${latestBlock} (out of ${headBlock}). Please check back soon.`}
             </WarningBanner>
           </WarningWrapper>
         )}
