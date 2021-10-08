@@ -164,7 +164,7 @@ function GlobalPage() {
           <ListOptions gap="10px" style={{ marginTop: '36px', marginBottom: '20px' }}>
             <RowBetween>
               <TYPE.main fontSize={'24px'} color="#FFFFFF">
-                {t('topPairs')}
+                {t('topTokens')}
               </TYPE.main>
               <ButtonLink to={'/tokens' + window.location.search}>{t('seeAll')}</ButtonLink>
             </RowBetween>
