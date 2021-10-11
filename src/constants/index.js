@@ -98,8 +98,7 @@ export const networks = [
     icon: BinanceIcon,
     links: {
       // CLIENT_APOLLO_LINK: 'https://api.studio.thegraph.com/query/10086/chkbsc/v0.2.0',
-      // CLIENT_APOLLO_LINK: 'https://api.thegraph.com/subgraphs/name/vkolerts/bsc-main',
-      CLIENT_APOLLO_LINK: 'https://api.thegraph.com/subgraphs/id/QmTgxj8PxGb4FyuxbUtyPrTuUB2HED5N5PxFDxEeziREHd', // pending version
+      CLIENT_APOLLO_LINK: 'https://api.thegraph.com/subgraphs/name/vkolerts/bsc-main',
       HEALTH_CLIENT_LINK: 'https://api.thegraph.com/index-node/graphql',
       BLOCK_CLIENT_LINK: 'https://api.thegraph.com/subgraphs/name/pancakeswap/blocks',
       SUBGRAPH_NAME: 'vkolerts/bsc-main',
