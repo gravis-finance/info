@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Flex } from 'rebass'
 import { RowFixed } from '../Row'
@@ -23,7 +23,7 @@ export default function Title({ isPushed }) {
   const history = useHistory()
 
   return (
-    <TitleWrapper onClick={() => history.push('/' + window.location.search)}>
+    <TitleWrapper to={`/home${window.location.search}`} as={Link}>
       <Flex alignItems="center" style={{ marginLeft: '10px' }}>
         <RowFixed>
           {/*<UniIcon id="link" onClick={() => history.push('/')}>*/}
