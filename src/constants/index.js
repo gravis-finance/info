@@ -28,6 +28,8 @@ export const SUPPORTED_LIST_URLS__NO_ENS = [
   'https://raw.githubusercontent.com/pancakeswap/pancake-swap-interface/master/src/constants/token/pancakeswap.json',
 ]
 
+export const GRVX_ADDRESSES = ["0xa349fd455a457467d31ca8db59052daebbbcc108"]
+
 // hide from overview list
 export const OVERVIEW_TOKEN_BLACKLIST = [
   '0x495c7f3a713870f68f8b418b355c085dfdc412c3',
