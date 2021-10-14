@@ -1,35 +1,33 @@
-import React, { useState, lazy } from 'react'
+import React, { lazy, useEffect, useState } from 'react'
 import { withRouter } from 'react-router-dom'
 import { Flex, Text } from 'rebass'
 import styled from 'styled-components'
-import Link, { ButtonLink } from '../components/Link'
+import Link, { BasicLink, ButtonLink } from '../components/Link'
 import Panel from '../components/Panel'
 import TokenLogo from '../components/TokenLogo'
 import PairList from '../components/PairList'
 import Loader from '../components/LocalLoader'
 import { AutoRow, RowBetween, RowFixed } from '../components/Row'
 // import Column, { AutoColumn } from '../components/Column'
-import { ButtonLight, ButtonDark } from '../components/ButtonStyled'
+import { ButtonDark, ButtonLight } from '../components/ButtonStyled'
 import TxnList from '../components/TxnList'
-import { BasicLink } from '../components/Link'
 import Search from '../components/Search'
 import { formattedNum, formattedPercent, getPoolLink, getSwapLink, localNumber } from '../utils'
-import { useTokenData, useTokenTransactions, useTokenPairs } from '../contexts/TokenData'
-import { TYPE, ThemedBackground } from '../Theme'
+import { useTokenData, useTokenPairs, useTokenTransactions } from '../contexts/TokenData'
+import { ThemedBackground, TYPE } from '../Theme'
 import { transparentize } from 'polished'
 import { useColor } from '../hooks'
 import CopyHelper from '../components/Copy'
 import { useMedia } from 'react-use'
 import { useDataForList } from '../contexts/PairData'
-import { useEffect } from 'react'
 import Warning from '../components/Warning'
 import { usePathDismissed } from '../contexts/LocalStorage'
 import {
-  PageWrapper,
   ContentWrapper,
-  StyledPairInformationBlock,
-  StyledPlusIcon,
+  PageWrapper,
   StyledBookmarkIcon,
+  StyledPairInformationBlock,
+  StyledPlusIcon
 } from '../components'
 // import { PlusCircle, Bookmark } from 'react-feather'
 import FormattedName from '../components/FormattedName'
@@ -38,6 +36,7 @@ import { BookmarkIcon, BorderedPlusIcon, ChevronMenuIcon, PlusIcon } from '../sv
 import { SavedInfo } from '../components/SavedInfo'
 import { getCurrentNetworkLinks } from '../utils/data'
 import { useTranslation } from 'react-multi-lang'
+import { GRVX_ADDRESSES } from '../constants'
 
 const TokenChart = lazy(() => import('../components/TokenChart'))
 // eslint-disable-next-line no-unused-expressions
@@ -245,7 +244,7 @@ function TokenPage({ address, history }) {
 
       <Warning
         type={'token'}
-        show={!dismissed && listedTokens && !listedTokens.includes(address)}
+        show={!dismissed && listedTokens && !listedTokens.includes(address) && !GRVX_ADDRESSES.includes(address)}
         setShow={markAsDismissed}
         address={address}
       />
@@ -291,7 +290,7 @@ function TokenPage({ address, history }) {
           )}
         </RowBetween>
 
-        <WarningGrouping disabled={!dismissed && listedTokens && !listedTokens.includes(address)}>
+        <WarningGrouping disabled={!dismissed && listedTokens && !listedTokens.includes(address) && !GRVX_ADDRESSES.includes(address)}>
           <DashboardWrapper style={{ marginTop: below1080 ? '0' : '1rem' }}>
             <RowBetween
               style={{
