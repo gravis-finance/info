@@ -17,6 +17,7 @@ export { default as GitHubIcon } from './Icons/GitHub'
 export { default as TelegramIcon } from './Icons/Telegram'
 export { default as TwitterIcon } from './Icons/Twitter'
 export { default as MediumIcon } from './Icons/Medium'
+export { default as DiscordIcon } from './Icons/Discord'
 
 export { default as BookmarkIcon } from './Icons/Bookmark'
 export { default as ArrowRightIcon } from './Icons/ArrowRight'

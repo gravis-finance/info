@@ -62,39 +62,6 @@ export const FEE_WARNING_TOKENS = ['0xd46ba6d942050d489dbd938a2c909a5d5039a161']
 
 export const networks = [
   {
-    title: 'huobi',
-    label: 'HECO',
-    icon: HuobiIcon,
-    links: {
-      CLIENT_APOLLO_LINK: 'https://q.hg.network/subgraphs/name/gravis/heco',
-      HEALTH_CLIENT_LINK: 'https://h.hg.network/graphql',
-      BLOCK_CLIENT_LINK: 'https://n10.hg.network/subgraphs/name/makiblocks/heco',
-      // BLOCK_CLIENT_LINK: 'https://heco-graph.sashimi.cool/subgraphs/name/blocklytics/ethereum-blocks', // reserve
-      SUBGRAPH_NAME: 'gravis/heco',
-      SCAN_LINK: `${process.env.REACT_APP_HECO_INFO_LINK}/address/`,
-      SCAN_LINK_TX: `${process.env.REACT_APP_HECO_INFO_LINK}/tx/`,
-      SCAN_LINK_TOKEN: `${process.env.REACT_APP_HECO_INFO_LINK}/token/`,
-      SCAN_LINK_BLOCK: `${process.env.REACT_APP_HECO_INFO_LINK}/block/`,
-      TOKEN_TITLE: 'HT',
-      SCAN_LINK_TITLE: 'viewOnHecoInfo',
-      TOKENS_URL: (tokenAddress) => {
-        // return `https://mdex.com/token-icons/heco/${tokenAddress}.png`
-        // return console.log(hecoTokensConfig.tokens.find(token => token.address === tokenAddress))
-        if (tokenAddress)
-          return `${
-            hecoTokensConfig.tokens
-              .find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
-              ?.logoURI.includes('http')
-              ? hecoTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
-                  ?.logoURI
-              : window.location.origin +
-                hecoTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
-                  ?.logoURI
-          }`
-      },
-    },
-  },
-  {
     title: 'binance',
     label: 'BSC',
     icon: BinanceIcon,
@@ -141,6 +108,39 @@ export const networks = [
               : window.location.origin +
                 polygonTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
                   ?.logoURI
+          }`
+      },
+    },
+  },
+  {
+    title: 'huobi',
+    label: 'HECO',
+    icon: HuobiIcon,
+    links: {
+      CLIENT_APOLLO_LINK: 'https://q.hg.network/subgraphs/name/gravis/heco',
+      HEALTH_CLIENT_LINK: 'https://h.hg.network/graphql',
+      BLOCK_CLIENT_LINK: 'https://n10.hg.network/subgraphs/name/makiblocks/heco',
+      // BLOCK_CLIENT_LINK: 'https://heco-graph.sashimi.cool/subgraphs/name/blocklytics/ethereum-blocks', // reserve
+      SUBGRAPH_NAME: 'gravis/heco',
+      SCAN_LINK: `${process.env.REACT_APP_HECO_INFO_LINK}/address/`,
+      SCAN_LINK_TX: `${process.env.REACT_APP_HECO_INFO_LINK}/tx/`,
+      SCAN_LINK_TOKEN: `${process.env.REACT_APP_HECO_INFO_LINK}/token/`,
+      SCAN_LINK_BLOCK: `${process.env.REACT_APP_HECO_INFO_LINK}/block/`,
+      TOKEN_TITLE: 'HT',
+      SCAN_LINK_TITLE: 'viewOnHecoInfo',
+      TOKENS_URL: (tokenAddress) => {
+        // return `https://mdex.com/token-icons/heco/${tokenAddress}.png`
+        // return console.log(hecoTokensConfig.tokens.find(token => token.address === tokenAddress))
+        if (tokenAddress)
+          return `${
+            hecoTokensConfig.tokens
+              .find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+              ?.logoURI.includes('http')
+              ? hecoTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+                ?.logoURI
+              : window.location.origin +
+              hecoTokensConfig.tokens.find((token) => token.address.toLowerCase() === tokenAddress.toLowerCase())
+                ?.logoURI
           }`
       },
     },

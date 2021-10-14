@@ -38,6 +38,7 @@ import { Flex } from 'rebass'
 import { SavedInfo } from '../components/SavedInfo'
 import { getCurrentNetworkLinks } from '../utils/data'
 import { useTranslation } from 'react-multi-lang'
+import { GRVX_ADDRESSES } from '../constants'
 
 const PairChart = lazy(() => import('../components/PairChart'))
 // eslint-disable-next-line no-unused-expressions
@@ -310,7 +311,7 @@ function PairPage({ pairAddress, history }) {
       <span />
       <Warning
         type={'pair'}
-        show={!dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id))}
+        show={!dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id)) && !GRVX_ADDRESSES.includes(token0?.id) && !GRVX_ADDRESSES.includes(token1?.id)}
         setShow={markAsDismissed}
         address={pairAddress}
       />
@@ -344,7 +345,7 @@ function PairPage({ pairAddress, history }) {
         </RowBetween>
         <WarningGrouping
           disabled={
-            !dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id))
+            !dismissed && listedTokens && !(listedTokens.includes(token0?.id) && listedTokens.includes(token1?.id)) && !GRVX_ADDRESSES.includes(token0?.id) && !GRVX_ADDRESSES.includes(token1?.id)
           }
         >
           <DashboardWrapper>
