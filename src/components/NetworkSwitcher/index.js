@@ -160,7 +160,7 @@ const NetworkSwitch = ({ toggleMobile = true, local }) => {
   const [showOptions, setShowOptions] = useState(false)
   // const [selectedOption, setSelectedOption] = useState(getNetworkTitles() || 'Huobi')
   const params = new URLSearchParams(window.location.search.toString())
-  const [selectedOption, setSelectedOption] = useState(params.get('network') ? params.get('network') : 'polygon')
+  const [selectedOption, setSelectedOption] = useState(params.get('network') ? params.get('network') : 'binance')
   // const networks = getNetworks(isProduction)
   // console.log(window.location)
 
