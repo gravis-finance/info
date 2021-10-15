@@ -1,31 +1,58 @@
 stages:
     - build
     - deploy
-
-build-develop:
+build:
     stage: build
-    only: 
-        - develop
+    only:
+        - master
     image: node:12-buster
-    tags: &b_runner 
+    tags: &b_runner
         - builder
         - docker-executor
     script:
         - yarn global add dotenv-cli
         - yarn install
-        - yarn build:dev
+        - yarn build
+    artifacts:
+        expire_in: 1 week
+        paths:
+            - build
+deploy_prod:
+    stage: deploy
+    only:
+        - master
+    tags:
+      - shell
+      - prod
+      - deploy-runner
+    when: manual
+    script:
+        - rsync -a ./build/* /var/www/info/build/
+
+build_develop:
+    stage: build
+    only:
+        - develop
+    image: node:12-buster
+    tags: &b_runner
+        - builder
+        - docker-executor
+    script:
+        - yarn global add dotenv-cli
+        - yarn install
+        - yarn build
     artifacts:
         expire_in: 1 week
         paths:
             - build
 deploy_develop:
     stage: deploy
-    only: 
+    only:
         - develop
-    tags: 
+    tags:
       - shell
-      - dev
+      - prod
       - deploy-runner
+    when: manual
     script:
         - rsync -a ./build/* /var/www/alium-info/build/
-
