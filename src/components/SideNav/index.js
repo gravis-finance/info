@@ -195,8 +195,8 @@ function SideNav({ setIsPushedState, isPushed }) {
 
   const changeNetworkHandler = () => {
     const params = new URLSearchParams(window.location.search.toString())
-    if (params.get('network') !== 'polygon') {
-      params.set('network', 'polygon')
+    if (params.get('network') !== 'binance') {
+      params.set('network', 'binance')
     }
   }
 
