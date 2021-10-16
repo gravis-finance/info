@@ -11,7 +11,7 @@ import { Divider } from '..'
 import LocalLoader from '../LocalLoader'
 import { formattedNum, formattedPercent } from '../../utils'
 import { useMedia } from 'react-use'
-import { OVERVIEW_TOKEN_BLACKLIST } from '../../constants'
+import { GRVX_ADDRESSES, OVERVIEW_TOKEN_BLACKLIST } from '../../constants'
 import FormattedName from '../FormattedName'
 import { PagePicker } from '../Page'
 import { ArrowDownIcon } from '../../svg/'
@@ -27,7 +27,7 @@ const List = styled(Box)`
 const DashGrid = styled.div`
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: 100px 1fr 1fr;
+  grid-template-columns: 160px 1fr 1fr;
   grid-template-areas: 'name liq vol';
 
   ${(props) =>
@@ -52,7 +52,7 @@ const DashGrid = styled.div`
   @media screen and (min-width: 680px) {
     display: grid;
     grid-gap: 1em;
-    grid-template-columns: 180px 1fr 1fr 1fr;
+    grid-template-columns: 240px 1fr 1fr 1fr;
     grid-template-areas: 'name symbol liq vol ';
 
     > * {
@@ -186,6 +186,49 @@ function TopTokenList({ tokens, itemMax = 10 }) {
     )
   }, [formattedTokens, itemMax, page, sortDirection, sortedColumn])
 
+  const HotContainer = styled.div`
+    padding: 0px 4px;
+    color: white;
+    align-items: center;
+    background-color: transparent;
+    border: 2px solid rgb(235, 149, 0);
+    border-radius: 16px;
+    display: inline-flex;
+    font-size: 11px;
+    font-weight: 400;
+    height: 18px;
+    line-height: 1.5;
+    padding: 0px 8px;
+    white-space: nowrap;
+    margin-left: 8px;
+    position: relative;
+    overflow: hidden;
+    
+    :after {
+      content: '';
+      position: absolute;
+      left: -12px;
+      top: -1px;
+      width: 10px;
+      height: 22px;
+      background: rgba(255, 255, 255, 0.5);
+      transform: skew(-30deg);
+      animation: shine-hot 2s ease-in-out infinite;
+    }
+    
+    @keyframes shine-hot {
+      0% {
+        left: -12px;
+      }
+      50% {
+        left: 100%;
+      }
+      100% {
+        left: 100%;
+      }
+    }
+  `
+
   const ListItem = useCallback(
     ({ item, index }) => {
       return (
@@ -201,12 +244,18 @@ function TopTokenList({ tokens, itemMax = 10 }) {
                 style={{ marginLeft: '16px', whiteSpace: 'nowrap' }}
                 to={'/token/' + item.id + window.location.search}
               >
-                <FormattedName
-                  text={below680 ? item.symbol : item.name}
-                  maxCharacters={below600 ? 8 : 16}
-                  adjustSize={true}
-                  link={true}
-                />
+                <Flex alignItems="center">
+                  <FormattedName
+                    text={below680 ? item.symbol : item.name}
+                    maxCharacters={below600 ? 8 : 16}
+                    adjustSize={true}
+                    link={true}
+                  />
+                  {GRVX_ADDRESSES.includes(item.id) &&
+                    <HotContainer>
+                      HOT
+                    </HotContainer>}
+                </Flex>
               </CustomLink>
             </Row>
           </DataText>

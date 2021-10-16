@@ -27,7 +27,7 @@ const List = styled(Box)`
 const DashGrid = styled.div`
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: 100px 1fr 1fr;
+  grid-template-columns: 160px 1fr 1fr;
   grid-template-areas: 'name liq vol';
 
   ${(props) =>
@@ -52,7 +52,7 @@ const DashGrid = styled.div`
   @media screen and (min-width: 680px) {
     display: grid;
     grid-gap: 1em;
-    grid-template-columns: 180px 1fr 1fr 1fr;
+    grid-template-columns: 240px 1fr 1fr 1fr;
     grid-template-areas: 'name symbol liq vol ';
 
     > * {
