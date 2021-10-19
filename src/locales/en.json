@@ -85,5 +85,8 @@
   "pairName": "Pair Name",
   "pairAddress": "Pair Address",
   "tokenInformation": "Token Information",
-  "address": "Address"
+  "address": "Address",
+  "viewOnBscscan": "View on BSCScan",
+  "viewOnHecoInfo": "View on HecoInfo",
+  "viewOnPolygonScan": "View on Matic"
 }

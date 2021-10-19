@@ -419,7 +419,7 @@ function PairPage({ pairAddress, history }) {
                       <BorderedPlusIcon style={{ marginRight: '8px' }} /> <span>{t('addLiquidity')}</span>
                     </Link>
                   </StyledButtonLight>
-                  <Link external href={getSwapLink(token0?.id, token1?.id)}>
+                  <Link external href={getSwapLink(token0?.id, token1?.id)} style={{ marginRight: 8 }}>
                     <ButtonDark
                       ml={!below1080 && '.5rem'}
                       mr={below1080 && '.5rem'}
@@ -429,6 +429,11 @@ function PairPage({ pairAddress, history }) {
                       {t('trade')}
                     </ButtonDark>
                   </Link>
+                  <ButtonLight style={{ marginRight: 8 }}>
+                    <Link external href={getCurrentNetworkLinks().SCAN_LINK + pairAddress}>
+                      {t(getCurrentNetworkLinks().SCAN_LINK_TITLE)}
+                    </Link>
+                  </ButtonLight>
                 </RowFixed>
               </div>
             </AutoColumn>
@@ -663,7 +668,7 @@ function PairPage({ pairAddress, history }) {
                     </Column>
                     <ButtonLight>
                       <Link external href={getCurrentNetworkLinks().SCAN_LINK + pairAddress}>
-                        {getCurrentNetworkLinks().SCAN_LINK_TITLE}
+                        {t(getCurrentNetworkLinks().SCAN_LINK_TITLE)}
                       </Link>
                     </ButtonLight>
                   </StyledPairInformationBlock>

@@ -85,5 +85,8 @@
   "pairName": "ペア名",
   "pairAddress": "ペアアドレス",
   "tokenInformation": "トークン情報",
-  "address": "アドレス"
+  "address": "アドレス",
+  "viewOnBscscan": "BSCScanで見る",
+  "viewOnHecoInfo": "HecoInfoで見る",
+  "viewOnPolygonScan": "Maticで見る"
 }

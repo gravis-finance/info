@@ -296,7 +296,7 @@ function TokenPage({ address, history }) {
               style={{
                 flexWrap: 'wrap',
                 marginBottom: '2rem',
-                alignItems: 'flex-start',
+                alignItems: 'center',
               }}
             >
               <RowFixed style={{ flexWrap: 'wrap' }}>
@@ -361,6 +361,11 @@ function TokenPage({ address, history }) {
                       {t('trade')}
                     </ButtonDark>
                   </Link>
+                  <ButtonLight style={{ marginLeft: '21%' }}>
+                      <Link external href={getCurrentNetworkLinks().SCAN_LINK + address}>
+                        {t(getCurrentNetworkLinks().SCAN_LINK_TITLE)}
+                      </Link>
+                    </ButtonLight>
                 </RowFixed>
               </span>
             </RowBetween>
@@ -510,7 +515,7 @@ function TokenPage({ address, history }) {
                     </AutoRow>
                     <ButtonLight style={{ marginLeft: '21%' }}>
                       <Link external href={getCurrentNetworkLinks().SCAN_LINK + address}>
-                        {getCurrentNetworkLinks().SCAN_LINK_TITLE}
+                        {t(getCurrentNetworkLinks().SCAN_LINK_TITLE)}
                       </Link>
                     </ButtonLight>
                   </StyledPairInformationBlock>
