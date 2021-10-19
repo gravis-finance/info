@@ -85,5 +85,8 @@
   "pairName": "交易对名称",
   "pairAddress": "配对地址",
   "tokenInformation": "代币信息",
-  "address": "地址"
+  "address": "地址",
+  "viewOnBscscan": "在BSCScan浏览器上查看",
+  "viewOnHecoInfo": "在HecoInfo浏览器上查看",
+  "viewOnPolygonScan": "在Matic浏览器上查看"
 }
