@@ -53,6 +53,7 @@ const ContentWrapper = styled.div`
   @media screen and (max-width: 1024px) {
     flex-direction: column;
     overflow-x: hidden;
+    position: relative;
   }
 `
 
