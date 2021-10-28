@@ -203,7 +203,7 @@ const TokenChart = ({ address, color, base }) => {
               </AutoRow>
             )}
           </AutoColumn>
-          <AutoRow justify="flex-end" gap="6px" align="flex-start">
+          <AutoRow justify="flex-end" gap="6px" align="flex-start" style={{ width: 'auto' }}>
             <ChartOptionButton
               active={timeWindow === timeframeOptions.WEEK}
               onClick={() => setTimeWindow(timeframeOptions.WEEK)}
