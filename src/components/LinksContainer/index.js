@@ -41,7 +41,7 @@ const LinksContainer = () => {
           <GitHubIcon />
         </StyledLink>
         <StyledLink
-          href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/gravisfinance'}`}
+          href={`${getCurrentLanguage() === 'jp' ? 'https://t.me/gravis_finance_jp' : 'https://t.me/Gravis_Finance_En'}`}
           target={'_blank'}
         >
           <TelegramIcon />
