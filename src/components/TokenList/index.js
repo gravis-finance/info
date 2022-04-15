@@ -11,7 +11,7 @@ import { Divider } from '..'
 import LocalLoader from '../LocalLoader'
 import { formattedNum, formattedPercent } from '../../utils'
 import { useMedia } from 'react-use'
-import { GRVX_ADDRESSES, OVERVIEW_TOKEN_BLACKLIST } from '../../constants'
+import {GRVS_ADDRESSES, GRVX_ADDRESSES, OVERVIEW_TOKEN_BLACKLIST} from '../../constants'
 import FormattedName from '../FormattedName'
 import { PagePicker } from '../Page'
 import { ArrowDownIcon } from '../../svg/'
@@ -251,7 +251,7 @@ function TopTokenList({ tokens, itemMax = 10 }) {
                     adjustSize={true}
                     link={true}
                   />
-                  {GRVX_ADDRESSES.includes(item.id) &&
+                  {(GRVX_ADDRESSES.includes(item.id) || GRVS_ADDRESSES.includes(item.id)) &&
                     <HotContainer>
                       HOT
                     </HotContainer>}

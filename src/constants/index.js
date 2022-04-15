@@ -29,6 +29,7 @@ export const SUPPORTED_LIST_URLS__NO_ENS = [
 ]
 
 export const GRVX_ADDRESSES = ["0xa349fd455a457467d31ca8db59052daebbbcc108", "0xd322da59c420e0827e31c40f1886346fb19c6687"]
+export const GRVS_ADDRESSES = ["0x190cec0657a02e9eab1c1df5d59f9139131cf539"]
 
 // hide from overview list
 export const OVERVIEW_TOKEN_BLACKLIST = [

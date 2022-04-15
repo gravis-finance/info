@@ -4,7 +4,7 @@ import { isAddress } from '../../utils/index.js'
 import PlaceHolder from '../../assets/placeholder.svg'
 import EthereumLogo from '../../assets/eth.png'
 import { getCurrentNetworkLinks } from '../../utils/data'
-import { GRVX_ADDRESSES } from '../../constants'
+import {GRVS_ADDRESSES, GRVX_ADDRESSES} from '../../constants'
 
 const BAD_IMAGES = {}
 
@@ -83,6 +83,8 @@ export default function TokenLogo({ address, header = false, size = '18px', bord
 
   if(GRVX_ADDRESSES.includes(address))
     path = window.location.origin+'/images/coins/GRVX.png'
+if(GRVS_ADDRESSES.includes(address))
+    path = window.location.origin+'/images/coins/GRVS.png'
 
   // console.log(window.location.origin + '/images/coins/USDT.png')
 

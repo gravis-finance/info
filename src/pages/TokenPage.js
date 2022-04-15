@@ -36,7 +36,7 @@ import { BookmarkIcon, BorderedPlusIcon, ChevronMenuIcon, PlusIcon } from '../sv
 import { SavedInfo } from '../components/SavedInfo'
 import { getCurrentNetworkLinks } from '../utils/data'
 import { useTranslation } from 'react-multi-lang'
-import { GRVX_ADDRESSES } from '../constants'
+import {GRVS_ADDRESSES, GRVX_ADDRESSES} from '../constants'
 
 const TokenChart = lazy(() => import('../components/TokenChart'))
 // eslint-disable-next-line no-unused-expressions
@@ -244,7 +244,7 @@ function TokenPage({ address, history }) {
 
       <Warning
         type={'token'}
-        show={!dismissed && listedTokens && !listedTokens.includes(address) && !GRVX_ADDRESSES.includes(address)}
+        show={!dismissed && listedTokens && !listedTokens.includes(address) && !GRVX_ADDRESSES.includes(address) && !GRVS_ADDRESSES.includes(address)}
         setShow={markAsDismissed}
         address={address}
       />
@@ -290,7 +290,7 @@ function TokenPage({ address, history }) {
           )}
         </RowBetween>
 
-        <WarningGrouping disabled={!dismissed && listedTokens && !listedTokens.includes(address) && !GRVX_ADDRESSES.includes(address)}>
+        <WarningGrouping disabled={!dismissed && listedTokens && !listedTokens.includes(address) && !GRVX_ADDRESSES.includes(address) &&  !GRVS_ADDRESSES.includes(address)}>
           <DashboardWrapper style={{ marginTop: below1080 ? '0' : '1rem' }}>
             <RowBetween
               style={{
