@@ -52,7 +52,7 @@ const LinksContainer = () => {
         <StyledLink href="https://medium.com/gravis-finance" target={'_blank'}>
           <MediumIcon />
         </StyledLink>
-        <StyledLink href="https://discord.gg/GravisFinance" target={'_blank'}>
+        <StyledLink href="https://discord.io/GravisFinance" target={'_blank'}>
           <DiscordIcon />
         </StyledLink>
       </StyledLinks>
