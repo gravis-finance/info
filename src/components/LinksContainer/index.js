@@ -46,7 +46,7 @@ const LinksContainer = () => {
         >
           <TelegramIcon />
         </StyledLink>
-        <StyledLink href="https://twitter.com/gammarosigma" target={'_blank'}>
+        <StyledLink href="https://twitter.com/GravisFi" target={'_blank'}>
           <TwitterIcon />
         </StyledLink>
         <StyledLink href="https://medium.com/gravis-finance" target={'_blank'}>
